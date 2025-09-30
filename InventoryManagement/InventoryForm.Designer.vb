@@ -23,9 +23,6 @@ Partial Class InventoryForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(InventoryForm))
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.BackBtn = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.ProductTable = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.DeleteBtns = New System.Windows.Forms.Button()
@@ -33,44 +30,13 @@ Partial Class InventoryForm
         Me.EditBtns = New System.Windows.Forms.Button()
         Me.CategoryBox = New System.Windows.Forms.ComboBox()
         Me.SearchTxt = New System.Windows.Forms.TextBox()
-        Me.Panel1.SuspendLayout()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.BackBtn = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.ProductTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.MenuHighlight
-        Me.Panel1.Controls.Add(Me.BackBtn)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(468, 74)
-        Me.Panel1.TabIndex = 4
-        '
-        'BackBtn
-        '
-        Me.BackBtn.FlatAppearance.BorderSize = 0
-        Me.BackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BackBtn.Image = CType(resources.GetObject("BackBtn.Image"), System.Drawing.Image)
-        Me.BackBtn.Location = New System.Drawing.Point(430, -1)
-        Me.BackBtn.Name = "BackBtn"
-        Me.BackBtn.Size = New System.Drawing.Size(38, 37)
-        Me.BackBtn.TabIndex = 2
-        Me.BackBtn.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Baskerville Old Face", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Image = CType(resources.GetObject("Label1.Image"), System.Drawing.Image)
-        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.Location = New System.Drawing.Point(2, -1)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(435, 75)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "     Inventory"
         '
         'ProductTable
         '
@@ -154,6 +120,40 @@ Partial Class InventoryForm
         Me.SearchTxt.Size = New System.Drawing.Size(210, 23)
         Me.SearchTxt.TabIndex = 13
         '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Baskerville Old Face", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Image = CType(resources.GetObject("Label1.Image"), System.Drawing.Image)
+        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label1.Location = New System.Drawing.Point(2, -1)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(435, 75)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "     Inventory"
+        '
+        'BackBtn
+        '
+        Me.BackBtn.FlatAppearance.BorderSize = 0
+        Me.BackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BackBtn.Image = CType(resources.GetObject("BackBtn.Image"), System.Drawing.Image)
+        Me.BackBtn.Location = New System.Drawing.Point(430, -1)
+        Me.BackBtn.Name = "BackBtn"
+        Me.BackBtn.Size = New System.Drawing.Size(38, 37)
+        Me.BackBtn.TabIndex = 2
+        Me.BackBtn.UseVisualStyleBackColor = True
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.SystemColors.MenuHighlight
+        Me.Panel1.Controls.Add(Me.BackBtn)
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(468, 74)
+        Me.Panel1.TabIndex = 4
+        '
         'InventoryForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -169,17 +169,13 @@ Partial Class InventoryForm
         Me.Name = "InventoryForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Inventory"
-        Me.Panel1.ResumeLayout(False)
         CType(Me.ProductTable, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents BackBtn As Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents ProductTable As DataGridView
     Friend WithEvents Panel2 As Panel
     Friend WithEvents AddBtns As Button
@@ -187,4 +183,7 @@ Partial Class InventoryForm
     Friend WithEvents CategoryBox As ComboBox
     Friend WithEvents SearchTxt As TextBox
     Friend WithEvents DeleteBtns As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents BackBtn As Button
+    Friend WithEvents Panel1 As Panel
 End Class

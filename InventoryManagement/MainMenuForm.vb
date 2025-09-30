@@ -17,6 +17,14 @@
     End Sub
 
     Private Sub SalesBtn_Click(sender As Object, e As EventArgs) Handles SalesBtn.Click
+        Dim sal As New SalesForm
+        sal.Show()
+        Me.Hide()
+    End Sub
 
+    Private Sub ReportsBtn_Click(sender As Object, e As EventArgs) Handles ReportsBtn.Click
+        Dim Rep As New SalesReportForm
+        Rep.Show()
+        Me.Hide()
     End Sub
 End Class
