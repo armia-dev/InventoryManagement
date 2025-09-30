@@ -16,5 +16,7 @@
         Me.Hide()
     End Sub
 
+    Private Sub SalesBtn_Click(sender As Object, e As EventArgs) Handles SalesBtn.Click
 
+    End Sub
 End Class

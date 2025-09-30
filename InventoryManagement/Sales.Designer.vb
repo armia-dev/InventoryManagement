@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DeleteForm
+Partial Class Sales
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,13 +24,14 @@ Partial Class DeleteForm
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
-        'DeleteForm
+        'Sales
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(398, 231)
-        Me.Name = "DeleteForm"
-        Me.Text = "DeleteForm"
+        Me.ClientSize = New System.Drawing.Size(468, 356)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Name = "Sales"
+        Me.Text = "Billing"
         Me.ResumeLayout(False)
 
     End Sub

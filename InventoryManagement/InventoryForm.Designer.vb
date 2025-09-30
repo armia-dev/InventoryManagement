@@ -46,7 +46,7 @@ Partial Class InventoryForm
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(541, 74)
+        Me.Panel1.Size = New System.Drawing.Size(468, 74)
         Me.Panel1.TabIndex = 4
         '
         'BackBtn
@@ -54,7 +54,7 @@ Partial Class InventoryForm
         Me.BackBtn.FlatAppearance.BorderSize = 0
         Me.BackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BackBtn.Image = CType(resources.GetObject("BackBtn.Image"), System.Drawing.Image)
-        Me.BackBtn.Location = New System.Drawing.Point(503, -1)
+        Me.BackBtn.Location = New System.Drawing.Point(430, -1)
         Me.BackBtn.Name = "BackBtn"
         Me.BackBtn.Size = New System.Drawing.Size(38, 37)
         Me.BackBtn.TabIndex = 2
@@ -75,9 +75,9 @@ Partial Class InventoryForm
         'ProductTable
         '
         Me.ProductTable.BackgroundColor = System.Drawing.SystemColors.ControlLight
-        Me.ProductTable.Location = New System.Drawing.Point(15, 107)
+        Me.ProductTable.Location = New System.Drawing.Point(15, 103)
         Me.ProductTable.Name = "ProductTable"
-        Me.ProductTable.Size = New System.Drawing.Size(514, 212)
+        Me.ProductTable.Size = New System.Drawing.Size(440, 212)
         Me.ProductTable.TabIndex = 5
         '
         'Panel2
@@ -87,9 +87,9 @@ Partial Class InventoryForm
         Me.Panel2.Controls.Add(Me.AddBtns)
         Me.Panel2.Controls.Add(Me.EditBtns)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 330)
+        Me.Panel2.Location = New System.Drawing.Point(0, 319)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(541, 37)
+        Me.Panel2.Size = New System.Drawing.Size(468, 37)
         Me.Panel2.TabIndex = 11
         '
         'DeleteBtns
@@ -99,7 +99,7 @@ Partial Class InventoryForm
         Me.DeleteBtns.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DeleteBtns.Image = CType(resources.GetObject("DeleteBtns.Image"), System.Drawing.Image)
         Me.DeleteBtns.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.DeleteBtns.Location = New System.Drawing.Point(336, 3)
+        Me.DeleteBtns.Location = New System.Drawing.Point(323, 2)
         Me.DeleteBtns.Name = "DeleteBtns"
         Me.DeleteBtns.Size = New System.Drawing.Size(101, 33)
         Me.DeleteBtns.TabIndex = 7
@@ -114,7 +114,7 @@ Partial Class InventoryForm
         Me.AddBtns.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AddBtns.Image = CType(resources.GetObject("AddBtns.Image"), System.Drawing.Image)
         Me.AddBtns.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.AddBtns.Location = New System.Drawing.Point(122, 2)
+        Me.AddBtns.Location = New System.Drawing.Point(109, 1)
         Me.AddBtns.Name = "AddBtns"
         Me.AddBtns.Size = New System.Drawing.Size(101, 33)
         Me.AddBtns.TabIndex = 8
@@ -129,7 +129,7 @@ Partial Class InventoryForm
         Me.EditBtns.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.EditBtns.Image = CType(resources.GetObject("EditBtns.Image"), System.Drawing.Image)
         Me.EditBtns.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.EditBtns.Location = New System.Drawing.Point(229, 2)
+        Me.EditBtns.Location = New System.Drawing.Point(216, 1)
         Me.EditBtns.Name = "EditBtns"
         Me.EditBtns.Size = New System.Drawing.Size(101, 33)
         Me.EditBtns.TabIndex = 9
@@ -140,7 +140,7 @@ Partial Class InventoryForm
         '
         Me.CategoryBox.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.CategoryBox.FormattingEnabled = True
-        Me.CategoryBox.Location = New System.Drawing.Point(423, 80)
+        Me.CategoryBox.Location = New System.Drawing.Point(348, 79)
         Me.CategoryBox.Name = "CategoryBox"
         Me.CategoryBox.Size = New System.Drawing.Size(106, 21)
         Me.CategoryBox.TabIndex = 12
@@ -148,7 +148,7 @@ Partial Class InventoryForm
         'SearchTxt
         '
         Me.SearchTxt.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.SearchTxt.Location = New System.Drawing.Point(207, 80)
+        Me.SearchTxt.Location = New System.Drawing.Point(132, 77)
         Me.SearchTxt.Multiline = True
         Me.SearchTxt.Name = "SearchTxt"
         Me.SearchTxt.Size = New System.Drawing.Size(210, 23)
@@ -159,7 +159,7 @@ Partial Class InventoryForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(541, 367)
+        Me.ClientSize = New System.Drawing.Size(468, 356)
         Me.Controls.Add(Me.SearchTxt)
         Me.Controls.Add(Me.CategoryBox)
         Me.Controls.Add(Me.Panel2)

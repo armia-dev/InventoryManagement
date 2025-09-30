@@ -9,7 +9,7 @@ Public Class InventoryForm
 
     Private Sub LoadCategories()
         Using con As New MySqlConnection("server=localhost;user id=root;password=;database=inventorymanagement")
-            Dim query As String = "select distinct category from Product group by category"
+            Dim query As String = "select category from Product group by category"
             Using cmd As New MySqlCommand(query, con)
                 con.Open()
                 Dim reader As MySqlDataReader = cmd.ExecuteReader()
@@ -90,10 +90,8 @@ Public Class InventoryForm
             editForm.QuantityTxt.Text = row.Cells("Quantity").Value.ToString()
             editForm.PriceTxt.Text = row.Cells("Price").Value.ToString()
 
-            ' Open edit form as dialog
             editForm.ShowDialog()
 
-            ' Refresh products after editing
             LoadProducts()
         Else
             MessageBox.Show("Please select a product to edit.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)

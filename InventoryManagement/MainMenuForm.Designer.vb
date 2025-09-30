@@ -85,7 +85,7 @@ Partial Class MainMenuForm
         Me.SalesBtn.Name = "SalesBtn"
         Me.SalesBtn.Size = New System.Drawing.Size(214, 48)
         Me.SalesBtn.TabIndex = 7
-        Me.SalesBtn.Text = "              Billing"
+        Me.SalesBtn.Text = "               Sales"
         Me.SalesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.SalesBtn.UseVisualStyleBackColor = True
         '

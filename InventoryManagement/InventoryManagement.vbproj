@@ -83,16 +83,16 @@
     <Compile Include="AddForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Sales.Designer.vb">
+      <DependentUpon>Sales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sales.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ChangePinForm.Designer.vb">
       <DependentUpon>ChangePinForm.vb</DependentUpon>
     </Compile>
     <Compile Include="ChangePinForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DeleteForm.Designer.vb">
-      <DependentUpon>DeleteForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditForm.Designer.vb">
@@ -144,9 +144,6 @@
     <EmbeddedResource Include="ChangePinForm.resx">
       <DependentUpon>ChangePinForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DeleteForm.resx">
-      <DependentUpon>DeleteForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EditForm.resx">
       <DependentUpon>EditForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +161,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales.resx">
+      <DependentUpon>Sales.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

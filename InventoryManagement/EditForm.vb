@@ -1,14 +1,14 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class EditForm
-    ' Store the product ID of the row being edited
+
     Public Property ProductID As Integer
 
-    ' Connection string (change if needed)
+
     Dim conn As New MySqlConnection("server=localhost;userid=root;password=;database=inventorymanagement")
 
     Private Sub EditBtn_Click(sender As Object, e As EventArgs) Handles EditBtn.Click
-        ' Validation: check if fields are filled
+
         If String.IsNullOrWhiteSpace(NameTxt.Text) OrElse
            String.IsNullOrWhiteSpace(CategoryTxt.Text) OrElse
            String.IsNullOrWhiteSpace(QuantityTxt.Text) OrElse
@@ -47,20 +47,20 @@ Public Class EditForm
         Me.Close()
     End Sub
 
-    ' Prevent typing letters in Quantity
+
     Private Sub QuantityTxt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles QuantityTxt.KeyPress
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True
         End If
     End Sub
 
-    ' Prevent typing letters in Price (allows digits and one decimal point)
+
     Private Sub PriceTxt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles PriceTxt.KeyPress
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> "."c Then
             e.Handled = True
         End If
 
-        ' Only allow one decimal point
+
         If e.KeyChar = "."c AndAlso PriceTxt.Text.Contains(".") Then
             e.Handled = True
         End If
