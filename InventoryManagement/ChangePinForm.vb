@@ -7,7 +7,6 @@ Public Class ChangePinForm
         Me.Hide()
     End Sub
 
-
     Private Sub SetBtn_Click(sender As Object, e As EventArgs) Handles SetBtn.Click
 
         If OldPinTxt.Text.Length <> 4 OrElse Not IsNumeric(OldPinTxt.Text) Then
@@ -15,8 +14,8 @@ Public Class ChangePinForm
             Return
         End If
 
-        If NewPinTxt.Text.Length <> 4 OrElse Not IsNumeric(NewPinTxt.Text) Then
-            MessageBox.Show("New PIN must be 4 digits only.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If OldPinTxt.Text = NewPinTxt.Text Then
+            MessageBox.Show("New PIN cannot be the same as the Old PIN.", "Invalid PIN", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
@@ -35,9 +34,10 @@ Public Class ChangePinForm
                 Return
             End If
 
-            Dim query As String = "UPDATE pincode SET pin_code=@newPin"
+            Dim query As String = "UPDATE pincode SET pin_code=@newPin WHERE pin_code=@oldPin"
             Dim cmd As New MySqlCommand(query, conn)
             cmd.Parameters.AddWithValue("@newPin", NewPinTxt.Text)
+            cmd.Parameters.AddWithValue("@oldPin", OldPinTxt.Text)
 
             Dim rows As Integer = cmd.ExecuteNonQuery()
             conn.Close()
@@ -55,7 +55,6 @@ Public Class ChangePinForm
         End Try
     End Sub
 
-
     Private Sub Oldpin_KeyPress(sender As Object, e As KeyPressEventArgs) Handles OldPinTxt.KeyPress
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True
@@ -71,6 +70,5 @@ Public Class ChangePinForm
         NewPinTxt.MaxLength = 4
         NewPinTxt.PasswordChar = "*"c
     End Sub
-
 
 End Class
