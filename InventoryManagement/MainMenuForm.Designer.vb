@@ -2,7 +2,6 @@
 Partial Class MainMenuForm
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -14,15 +13,10 @@ Partial Class MainMenuForm
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainMenuForm))
         Me.ReportsBtn = New System.Windows.Forms.Button()
         Me.InventoryBtn = New System.Windows.Forms.Button()
         Me.SalesBtn = New System.Windows.Forms.Button()
@@ -114,7 +108,6 @@ Partial Class MainMenuForm
         Me.Label2.Size = New System.Drawing.Size(220, 21)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Inventory Management"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label1
         '

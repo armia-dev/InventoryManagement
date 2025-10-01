@@ -2,19 +2,6 @@
 Partial Class LoginForm
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        Try
-            If disposing AndAlso components IsNot Nothing Then
-                components.Dispose()
-            End If
-        Finally
-            MyBase.Dispose(disposing)
-        End Try
-    End Sub
-
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
@@ -134,7 +121,6 @@ Partial Class LoginForm
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents PinCode As TextBox
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Entr As Button
     Friend WithEvents ChngPin As LinkLabel
 End Class
