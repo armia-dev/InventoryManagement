@@ -1,125 +1,159 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class LoginForm
     Inherits System.Windows.Forms.Form
 
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LoginForm))
+        Me.HeaderPanel = New System.Windows.Forms.Panel()
         Me.ExitBtn = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.PinCode = New System.Windows.Forms.TextBox()
+        Me.lblTitle = New System.Windows.Forms.Label()
+        Me.LabelInfo = New System.Windows.Forms.Label()
+        Me.PinPanel = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PinCode = New System.Windows.Forms.TextBox()
         Me.Entr = New System.Windows.Forms.Button()
         Me.ChngPin = New System.Windows.Forms.LinkLabel()
+        Me.HeaderPanel.SuspendLayout()
+        Me.PinPanel.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'HeaderPanel
+        '
+        Me.HeaderPanel.BackColor = System.Drawing.Color.SteelBlue
+        Me.HeaderPanel.Controls.Add(Me.ExitBtn)
+        Me.HeaderPanel.Controls.Add(Me.lblTitle)
+        Me.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top
+        Me.HeaderPanel.Location = New System.Drawing.Point(0, 0)
+        Me.HeaderPanel.Name = "HeaderPanel"
+        Me.HeaderPanel.Size = New System.Drawing.Size(434, 43)
+        Me.HeaderPanel.TabIndex = 0
         '
         'ExitBtn
         '
         Me.ExitBtn.FlatAppearance.BorderSize = 0
         Me.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ExitBtn.Image = CType(resources.GetObject("ExitBtn.Image"), System.Drawing.Image)
-        Me.ExitBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ExitBtn.Location = New System.Drawing.Point(343, -4)
+        Me.ExitBtn.Location = New System.Drawing.Point(389, 5)
         Me.ExitBtn.Name = "ExitBtn"
-        Me.ExitBtn.Size = New System.Drawing.Size(31, 34)
+        Me.ExitBtn.Size = New System.Drawing.Size(34, 32)
         Me.ExitBtn.TabIndex = 0
         Me.ExitBtn.UseVisualStyleBackColor = True
         '
-        'Label1
+        'lblTitle
         '
-        Me.Label1.Font = New System.Drawing.Font("Gadugi", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(80, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(222, 47)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Mini Grocery Inventory Management"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblTitle.AutoSize = True
+        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold)
+        Me.lblTitle.ForeColor = System.Drawing.Color.White
+        Me.lblTitle.Location = New System.Drawing.Point(11, 11)
+        Me.lblTitle.Name = "lblTitle"
+        Me.lblTitle.Size = New System.Drawing.Size(154, 25)
+        Me.lblTitle.TabIndex = 1
+        Me.lblTitle.Text = "🔐 Admin Login"
         '
-        'Label2
+        'LabelInfo
         '
-        Me.Label2.Font = New System.Drawing.Font("Gadugi", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(97, 56)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(198, 40)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Enter The Admin Pin Code"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.LabelInfo.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.LabelInfo.Location = New System.Drawing.Point(69, 59)
+        Me.LabelInfo.Name = "LabelInfo"
+        Me.LabelInfo.Size = New System.Drawing.Size(297, 25)
+        Me.LabelInfo.TabIndex = 1
+        Me.LabelInfo.Text = "Enter your administrator pin code"
+        Me.LabelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'PinCode
+        'PinPanel
         '
-        Me.PinCode.BackColor = System.Drawing.SystemColors.Info
-        Me.PinCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PinCode.Location = New System.Drawing.Point(101, 99)
-        Me.PinCode.Multiline = True
-        Me.PinCode.Name = "PinCode"
-        Me.PinCode.Size = New System.Drawing.Size(188, 42)
-        Me.PinCode.TabIndex = 3
-        Me.PinCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.PinPanel.BackColor = System.Drawing.Color.White
+        Me.PinPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PinPanel.Controls.Add(Me.PictureBox1)
+        Me.PinPanel.Controls.Add(Me.PinCode)
+        Me.PinPanel.Location = New System.Drawing.Point(91, 96)
+        Me.PinPanel.Name = "PinPanel"
+        Me.PinPanel.Size = New System.Drawing.Size(251, 43)
+        Me.PinPanel.TabIndex = 2
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(48, 99)
+        Me.PictureBox1.Location = New System.Drawing.Point(6, 5)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(47, 42)
+        Me.PictureBox1.Size = New System.Drawing.Size(34, 32)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 4
+        Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
+        '
+        'PinCode
+        '
+        Me.PinCode.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.PinCode.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.PinCode.Location = New System.Drawing.Point(62, 10)
+        Me.PinCode.Name = "PinCode"
+        Me.PinCode.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.PinCode.Size = New System.Drawing.Size(137, 27)
+        Me.PinCode.TabIndex = 1
+        Me.PinCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Entr
         '
+        Me.Entr.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.Entr.FlatAppearance.BorderSize = 0
+        Me.Entr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen
         Me.Entr.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Entr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Entr.Location = New System.Drawing.Point(148, 147)
+        Me.Entr.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Entr.ForeColor = System.Drawing.Color.White
+        Me.Entr.Location = New System.Drawing.Point(154, 155)
         Me.Entr.Name = "Entr"
-        Me.Entr.Size = New System.Drawing.Size(89, 33)
-        Me.Entr.TabIndex = 5
-        Me.Entr.Text = "Enter Code"
-        Me.Entr.UseVisualStyleBackColor = True
+        Me.Entr.Size = New System.Drawing.Size(126, 37)
+        Me.Entr.TabIndex = 3
+        Me.Entr.Text = "Login"
+        Me.Entr.UseVisualStyleBackColor = False
         '
         'ChngPin
         '
         Me.ChngPin.AutoSize = True
-        Me.ChngPin.Location = New System.Drawing.Point(147, 183)
+        Me.ChngPin.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChngPin.LinkColor = System.Drawing.Color.SteelBlue
+        Me.ChngPin.Location = New System.Drawing.Point(163, 207)
         Me.ChngPin.Name = "ChngPin"
-        Me.ChngPin.Size = New System.Drawing.Size(90, 13)
-        Me.ChngPin.TabIndex = 6
+        Me.ChngPin.Size = New System.Drawing.Size(103, 17)
+        Me.ChngPin.TabIndex = 4
         Me.ChngPin.TabStop = True
         Me.ChngPin.Text = "Change Pin Code"
         '
         'LoginForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(374, 205)
+        Me.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.ClientSize = New System.Drawing.Size(434, 245)
         Me.Controls.Add(Me.ChngPin)
         Me.Controls.Add(Me.Entr)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.PinCode)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ExitBtn)
+        Me.Controls.Add(Me.PinPanel)
+        Me.Controls.Add(Me.LabelInfo)
+        Me.Controls.Add(Me.HeaderPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "LoginForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Form1"
+        Me.Text = "LoginForm"
+        Me.HeaderPanel.ResumeLayout(False)
+        Me.HeaderPanel.PerformLayout()
+        Me.PinPanel.ResumeLayout(False)
+        Me.PinPanel.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
+    Friend WithEvents HeaderPanel As Panel
     Friend WithEvents ExitBtn As Button
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents lblTitle As Label
+    Friend WithEvents LabelInfo As Label
+    Friend WithEvents PinPanel As Panel
+    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PinCode As TextBox
     Friend WithEvents Entr As Button
     Friend WithEvents ChngPin As LinkLabel

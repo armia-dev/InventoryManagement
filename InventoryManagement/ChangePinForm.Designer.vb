@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ChangePinForm
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    'Dispose
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -14,136 +14,142 @@ Partial Class ChangePinForm
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.BackBtn = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Oldpin = New System.Windows.Forms.TextBox()
-        Me.Newpin = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.ControlBox = False
+        Me.PanelHeader = New System.Windows.Forms.Panel()
+        Me.HeaderLabel = New System.Windows.Forms.Label()
+        Me.LabelOldPin = New System.Windows.Forms.Label()
+        Me.LabelNewPin = New System.Windows.Forms.Label()
+        Me.OldPinTxt = New System.Windows.Forms.TextBox()
+        Me.NewPinTxt = New System.Windows.Forms.TextBox()
         Me.SetBtn = New System.Windows.Forms.Button()
-        Me.Panel1.SuspendLayout()
+        Me.BackBtn = New System.Windows.Forms.Button()
+        Me.PanelHeader.SuspendLayout()
         Me.SuspendLayout()
         '
-        'BackBtn
+        'PanelHeader
         '
-        Me.BackBtn.FlatAppearance.BorderSize = 0
-        Me.BackBtn.Font = New System.Drawing.Font("Microsoft YaHei", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BackBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BackBtn.Location = New System.Drawing.Point(147, 164)
-        Me.BackBtn.Name = "BackBtn"
-        Me.BackBtn.Size = New System.Drawing.Size(57, 25)
-        Me.BackBtn.TabIndex = 3
-        Me.BackBtn.Text = "Cancel"
-        Me.BackBtn.UseVisualStyleBackColor = True
+        Me.PanelHeader.BackColor = System.Drawing.Color.SteelBlue
+        Me.PanelHeader.Controls.Add(Me.HeaderLabel)
+        Me.PanelHeader.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelHeader.Location = New System.Drawing.Point(0, 0)
+        Me.PanelHeader.Name = "PanelHeader"
+        Me.PanelHeader.Size = New System.Drawing.Size(400, 50)
+        Me.PanelHeader.TabIndex = 0
         '
-        'Label1
+        'HeaderLabel
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Roboto", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(3, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(253, 25)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "CHANGE YOUR PIN CODE"
+        Me.HeaderLabel.AutoSize = True
+        Me.HeaderLabel.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.HeaderLabel.ForeColor = System.Drawing.Color.White
+        Me.HeaderLabel.Location = New System.Drawing.Point(100, 10)
+        Me.HeaderLabel.Name = "HeaderLabel"
+        Me.HeaderLabel.Size = New System.Drawing.Size(189, 32)
+        Me.HeaderLabel.TabIndex = 0
+        Me.HeaderLabel.Text = "🔑 Change PIN"
         '
-        'Panel1
+        'LabelOldPin
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(356, 40)
-        Me.Panel1.TabIndex = 5
+        Me.LabelOldPin.AutoSize = True
+        Me.LabelOldPin.Font = New System.Drawing.Font("Segoe UI", 11.0!)
+        Me.LabelOldPin.Location = New System.Drawing.Point(50, 80)
+        Me.LabelOldPin.Name = "LabelOldPin"
+        Me.LabelOldPin.Size = New System.Drawing.Size(77, 25)
+        Me.LabelOldPin.TabIndex = 1
+        Me.LabelOldPin.Text = "Old PIN"
         '
-        'Label2
+        'LabelNewPin
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Roboto", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 73)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(67, 19)
-        Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Old Pin"
+        Me.LabelNewPin.AutoSize = True
+        Me.LabelNewPin.Font = New System.Drawing.Font("Segoe UI", 11.0!)
+        Me.LabelNewPin.Location = New System.Drawing.Point(50, 130)
+        Me.LabelNewPin.Name = "LabelNewPin"
+        Me.LabelNewPin.Size = New System.Drawing.Size(85, 25)
+        Me.LabelNewPin.TabIndex = 2
+        Me.LabelNewPin.Text = "New PIN"
         '
-        'Oldpin
+        'OldPinTxt
         '
-        Me.Oldpin.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Oldpin.Location = New System.Drawing.Point(106, 74)
-        Me.Oldpin.Multiline = True
-        Me.Oldpin.Name = "Oldpin"
-        Me.Oldpin.Size = New System.Drawing.Size(141, 19)
-        Me.Oldpin.TabIndex = 6
-        Me.Oldpin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.OldPinTxt.Font = New System.Drawing.Font("Segoe UI", 11.0!)
+        Me.OldPinTxt.Location = New System.Drawing.Point(160, 77)
+        Me.OldPinTxt.MaxLength = 6
+        Me.OldPinTxt.Name = "OldPinTxt"
+        Me.OldPinTxt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.OldPinTxt.Size = New System.Drawing.Size(180, 32)
+        Me.OldPinTxt.TabIndex = 3
+        Me.OldPinTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Newpin
+        'NewPinTxt
         '
-        Me.Newpin.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Newpin.Location = New System.Drawing.Point(106, 109)
-        Me.Newpin.Multiline = True
-        Me.Newpin.Name = "Newpin"
-        Me.Newpin.Size = New System.Drawing.Size(141, 19)
-        Me.Newpin.TabIndex = 7
-        Me.Newpin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Roboto", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(12, 108)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(74, 19)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "New Pin"
+        Me.NewPinTxt.Font = New System.Drawing.Font("Segoe UI", 11.0!)
+        Me.NewPinTxt.Location = New System.Drawing.Point(160, 127)
+        Me.NewPinTxt.MaxLength = 6
+        Me.NewPinTxt.Name = "NewPinTxt"
+        Me.NewPinTxt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.NewPinTxt.Size = New System.Drawing.Size(180, 32)
+        Me.NewPinTxt.TabIndex = 4
+        Me.NewPinTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'SetBtn
         '
-        Me.SetBtn.Font = New System.Drawing.Font("Microsoft YaHei", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SetBtn.Location = New System.Drawing.Point(132, 134)
+        Me.SetBtn.BackColor = System.Drawing.Color.SeaGreen
+        Me.SetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.SetBtn.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.SetBtn.ForeColor = System.Drawing.Color.White
+        Me.SetBtn.Location = New System.Drawing.Point(90, 190)
         Me.SetBtn.Name = "SetBtn"
-        Me.SetBtn.Size = New System.Drawing.Size(93, 24)
-        Me.SetBtn.TabIndex = 9
-        Me.SetBtn.Text = "Set New Pin"
-        Me.SetBtn.UseVisualStyleBackColor = True
+        Me.SetBtn.Size = New System.Drawing.Size(100, 40)
+        Me.SetBtn.TabIndex = 5
+        Me.SetBtn.Text = "✔ Set"
+        Me.SetBtn.UseVisualStyleBackColor = False
+        '
+        'BackBtn
+        '
+        Me.BackBtn.BackColor = System.Drawing.Color.IndianRed
+        Me.BackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BackBtn.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.BackBtn.ForeColor = System.Drawing.Color.White
+        Me.BackBtn.Location = New System.Drawing.Point(220, 190)
+        Me.BackBtn.Name = "BackBtn"
+        Me.BackBtn.Size = New System.Drawing.Size(100, 40)
+        Me.BackBtn.TabIndex = 6
+        Me.BackBtn.Text = "✖ Cancel"
+        Me.BackBtn.UseVisualStyleBackColor = False
         '
         'ChangePinForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ActiveBorder
-        Me.ClientSize = New System.Drawing.Size(356, 193)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(400, 260)
         Me.Controls.Add(Me.BackBtn)
         Me.Controls.Add(Me.SetBtn)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Newpin)
-        Me.Controls.Add(Me.Oldpin)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Panel1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Controls.Add(Me.NewPinTxt)
+        Me.Controls.Add(Me.OldPinTxt)
+        Me.Controls.Add(Me.LabelNewPin)
+        Me.Controls.Add(Me.LabelOldPin)
+        Me.Controls.Add(Me.PanelHeader)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "ChangePinForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.PanelHeader.ResumeLayout(False)
+        Me.PanelHeader.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents BackBtn As Button
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Oldpin As TextBox
-    Friend WithEvents Newpin As TextBox
-    Friend WithEvents Label3 As Label
+    Friend WithEvents PanelHeader As Panel
+    Friend WithEvents HeaderLabel As Label
+    Friend WithEvents LabelOldPin As Label
+    Friend WithEvents LabelNewPin As Label
+    Friend WithEvents OldPinTxt As TextBox
+    Friend WithEvents NewPinTxt As TextBox
     Friend WithEvents SetBtn As Button
+    Friend WithEvents BackBtn As Button
 End Class

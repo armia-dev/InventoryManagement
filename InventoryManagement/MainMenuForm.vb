@@ -18,7 +18,7 @@
         Me.Hide()
     End Sub
 
-    Private Sub ReportsBtn_Click(sender As Object, e As EventArgs) Handles ReportsBtn.Click
+    Private Sub ReportsBtn_Click(sender As Object, e As EventArgs) Handles SalesReportBtn.Click
         Dim Rep As New SalesReportForm
         Rep.Show()
         Me.Hide()
