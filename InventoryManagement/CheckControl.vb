@@ -3,35 +3,27 @@ Imports System.Drawing
 Imports System.Windows.Forms
 Imports System.Text
 
-Public Class InventoryControl
-    ' === SORTING FLAGS ===
-    Private sortAscending As Boolean = False ' ✅ Start with highest → lowest
-    Private currentSortColumn As String = "Quantity"
+Public Class CheckControl
+    ' Use different variable names to avoid conflicts with designer controls
+    Private Shared mySharedCart As CartControl = Nothing
+    Private sortAscending As Boolean = False
+    Private mySortColumn As String = "Quantity"
+    Private myScrollPanel As Panel
 
-    ' Declare scrollable panel that holds the product rows
-    Private pnlScroll As Panel
-
-    ' Timer for smoother searching
-    Private searchTimer As New Timer() With {.Interval = 400} ' 0.4 second delay
-
-    Private Sub InventoryControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Initialize layout only once
+    Private Sub CheckControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SetupScrollablePanel()
         EnableDoubleBuffer(tlpProduct)
         LoadCategories()
 
-        ' ✅ Set initial sort flag display
         lblQuantity.Font = New Font("Segoe UI", 10, FontStyle.Bold)
         lblQuantity.Text = "Quantity ▼"
         lblQuantity.ForeColor = Color.ForestGreen
 
-        ' Load products (initial load: Quantity DESC)
         LoadProducts()
     End Sub
 
-    ' === CREATE SCROLLABLE CONTAINER ===
     Private Sub SetupScrollablePanel()
-        pnlScroll = New Panel With {
+        myScrollPanel = New Panel With {
             .Dock = DockStyle.Fill,
             .AutoScroll = True,
             .Padding = New Padding(0),
@@ -53,44 +45,38 @@ Public Class InventoryControl
             tlpProduct.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F / 6.0F))
         Next
 
-        pnlScroll.Controls.Add(tlpProduct)
-        Me.Controls.Add(pnlScroll)
-        pnlScroll.BringToFront()
+        myScrollPanel.Controls.Add(tlpProduct)
+        Me.Controls.Add(myScrollPanel)
+        myScrollPanel.BringToFront()
     End Sub
 
-    ' === ENABLE DOUBLE BUFFERING FOR SMOOTH RENDER ===
     Private Sub EnableDoubleBuffer(ctrl As Control)
         Dim t As Type = ctrl.GetType()
         Dim pi = t.GetProperty("DoubleBuffered", Reflection.BindingFlags.Instance Or Reflection.BindingFlags.NonPublic)
         pi?.SetValue(ctrl, True, Nothing)
     End Sub
 
-    ' === LOAD PRODUCTS (supports search + category filter + sorting) ===
     Private Sub LoadProducts(Optional searchKeyword As String = "", Optional categoryFilter As String = "All")
         Try
             Dim connectionString As String = "server=localhost;user=root;password=;database=inventorymanagement"
             Using con As New MySqlConnection(connectionString)
                 con.Open()
 
-                ' Build query efficiently
                 Dim sb As New StringBuilder("SELECT ProductID, Name, Category, Quantity, Price FROM products WHERE 1=1")
 
                 If Not String.IsNullOrWhiteSpace(searchKeyword) Then
                     sb.Append(" AND (ProductID LIKE @keyword OR Name LIKE @keyword)")
                 End If
-
                 If categoryFilter <> "All" Then
                     sb.Append(" AND Category = @category")
                 End If
 
-                ' === Sorting ===
-                If currentSortColumn = "Quantity" Then
+                If mySortColumn = "Quantity" Then
                     sb.Append(If(sortAscending, " ORDER BY Quantity ASC", " ORDER BY Quantity DESC"))
                 Else
                     sb.Append(" ORDER BY ProductID ASC")
                 End If
 
-                ' ✅ Suspend layout for faster rendering
                 tlpProduct.SuspendLayout()
 
                 Using cmd As New MySqlCommand(sb.ToString(), con)
@@ -102,27 +88,22 @@ Public Class InventoryControl
                     End If
 
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
-                        ' Reset table layout
                         tlpProduct.Controls.Clear()
                         tlpProduct.RowStyles.Clear()
                         tlpProduct.RowCount = 0
 
                         Dim rowIndex As Integer = 0
                         Dim rowHeight As Integer = 35
-
-                        ' Cache font for better performance
                         Dim baseFont As New Font("Segoe UI", 15, FontStyle.Regular)
 
                         While reader.Read()
                             tlpProduct.RowStyles.Add(New RowStyle(SizeType.Absolute, rowHeight))
                             tlpProduct.RowCount += 1
 
-                            ' === Add Product Info Cells ===
                             AddProductCell(rowIndex, 0, reader("ProductID").ToString(), baseFont)
                             AddProductCell(rowIndex, 1, reader("Name").ToString(), baseFont)
                             AddProductCell(rowIndex, 2, reader("Category").ToString(), baseFont)
 
-                            ' === Quantity with color ===
                             Dim qty As Integer = Convert.ToInt32(reader("Quantity"))
                             Dim lblQty As New Label With {
                                 .Text = qty.ToString(),
@@ -136,56 +117,86 @@ Public Class InventoryControl
                             }
                             tlpProduct.Controls.Add(lblQty, 3, rowIndex)
 
-                            ' === Price ===
                             AddProductCell(rowIndex, 4, "₱" & Convert.ToDecimal(reader("Price")).ToString("N2"), baseFont)
 
-                            ' === Actions (edit/delete) ===
-                            Dim pnlActions As New FlowLayoutPanel With {
-                                .FlowDirection = FlowDirection.LeftToRight,
-                                .AutoSize = True,
-                                .Margin = New Padding(0),
-                                .Padding = New Padding(0)
-                            }
-
-                            Dim btnEdit As New Button With {
-                                .Text = "✏️",
-                                .Width = 28,
-                                .Height = 28,
+                            Dim btnAddToCart As New Button With {
+                                .Text = "Add to Cart",
+                                .AutoSize = False,
+                                .Width = 110,
+                                .Height = 30,
                                 .FlatStyle = FlatStyle.Flat,
-                                .BackColor = Color.LightYellow,
-                                .Tag = reader("ProductID")
+                                .BackColor = Color.PaleGreen,
+                                .Font = New Font("Segoe UI", 10, FontStyle.Bold),
+                                .Tag = New With {
+                                    .ProductID = reader("ProductID"),
+                                    .Name = reader("Name"),
+                                    .Category = reader("Category"),
+                                    .Price = reader("Price")
+                                }
                             }
-                            AddHandler btnEdit.Click, AddressOf Me.EditProduct
-
-                            Dim btnDelete As New Button With {
-                                .Text = "🗑️",
-                                .Width = 28,
-                                .Height = 28,
-                                .FlatStyle = FlatStyle.Flat,
-                                .BackColor = Color.MistyRose,
-                                .Tag = reader("ProductID")
-                            }
-                            AddHandler btnDelete.Click, AddressOf Me.DeleteProduct
-
-                            pnlActions.Controls.Add(btnEdit)
-                            pnlActions.Controls.Add(btnDelete)
-                            tlpProduct.Controls.Add(pnlActions, 5, rowIndex)
+                            AddHandler btnAddToCart.Click, AddressOf AddToCart_Click
+                            tlpProduct.Controls.Add(btnAddToCart, 5, rowIndex)
 
                             rowIndex += 1
                         End While
                     End Using
                 End Using
 
-                ' ✅ Resume layout (repaint after batch update)
                 tlpProduct.ResumeLayout(True)
             End Using
-
         Catch ex As Exception
             MessageBox.Show("Error loading products: " & ex.Message)
         End Try
     End Sub
 
-    ' === LOAD CATEGORIES ===
+    Private Sub AddProductCell(row As Integer, col As Integer, text As String, baseFont As Font)
+        Dim lbl As New Label With {
+            .Text = text,
+            .Dock = DockStyle.Fill,
+            .TextAlign = ContentAlignment.MiddleCenter,
+            .AutoSize = False,
+            .Margin = New Padding(0),
+            .Font = baseFont,
+            .Height = 35
+        }
+        tlpProduct.Controls.Add(lbl, col, row)
+    End Sub
+
+    Private Sub AddToCart_Click(sender As Object, e As EventArgs)
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim data = btn.Tag
+
+        Dim stockQty As Integer = 0
+        Try
+            Dim connectionString As String = "server=localhost;user=root;password=;database=inventorymanagement"
+            Using con As New MySqlConnection(connectionString)
+                con.Open()
+                Dim query As String = "SELECT Quantity FROM products WHERE ProductID = @id"
+                Using cmd As New MySqlCommand(query, con)
+                    cmd.Parameters.AddWithValue("@id", data.ProductID)
+                    Dim result = cmd.ExecuteScalar()
+                    If result IsNot Nothing Then stockQty = Convert.ToInt32(result)
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error retrieving stock: " & ex.Message)
+            Return
+        End Try
+
+        Dim frm As New AddToCartControl()
+        frm.ProductID = data.ProductID
+        frm.ProductName = data.Name
+        frm.Category = data.Category
+        frm.Price = data.Price
+        frm.MaxStock = stockQty
+
+        frm.ShowDialog()
+
+        If frm.IsConfirmed Then
+            AddProductToCart(data.ProductID, data.Name, data.Category, data.Price, frm.EnteredQty)
+        End If
+    End Sub
+
     Private Sub LoadCategories()
         Try
             Dim connectionString As String = "server=localhost;user=root;password=;database=inventorymanagement"
@@ -208,79 +219,12 @@ Public Class InventoryControl
         End Try
     End Sub
 
-    ' === ADD PRODUCT CELL ===
-    Private Sub AddProductCell(row As Integer, col As Integer, text As String, baseFont As Font)
-        Dim lbl As New Label With {
-            .Text = text,
-            .Dock = DockStyle.Fill,
-            .TextAlign = ContentAlignment.MiddleCenter,
-            .AutoSize = False,
-            .Margin = New Padding(0),
-            .Font = baseFont,
-            .Height = 35
-        }
-        tlpProduct.Controls.Add(lbl, col, row)
-    End Sub
-
-    ' === EDIT PRODUCT ===
-    Private Sub EditProduct(sender As Object, e As EventArgs)
-        Dim btn As Button = DirectCast(sender, Button)
-        Dim productId As Integer = Convert.ToInt32(btn.Tag)
-
-        Dim frm As New AddEditForm()
-        frm.Text = "Edit Product"
-        frm.Mode = "Edit"
-        frm.ProductID = productId
-        frm.ShowDialog()
-
-        LoadProducts(txtSearch.Text.Trim(), cmbCategory.Text)
-    End Sub
-
-    ' === DELETE PRODUCT ===
-    Private Sub DeleteProduct(sender As Object, e As EventArgs)
-        Dim btn As Button = DirectCast(sender, Button)
-        Dim productId As Integer = Convert.ToInt32(btn.Tag)
-
-        If MessageBox.Show("Are you sure you want to delete this record?",
-                           "Confirm Delete", MessageBoxButtons.YesNo,
-                           MessageBoxIcon.Warning) = DialogResult.Yes Then
-            Try
-                Dim connectionString As String = "server=localhost;user=root;password=;database=inventorymanagement"
-                Using con As New MySqlConnection(connectionString)
-                    con.Open()
-                    Dim query As String = "DELETE FROM products WHERE ProductID = @ProductID"
-                    Using cmd As New MySqlCommand(query, con)
-                        cmd.Parameters.AddWithValue("@ProductID", productId)
-                        If cmd.ExecuteNonQuery() > 0 Then
-                            LoadProducts(txtSearch.Text.Trim(), cmbCategory.Text)
-                        End If
-                    End Using
-                End Using
-            Catch ex As Exception
-                MessageBox.Show("Error deleting product: " & ex.Message)
-            End Try
-        End If
-    End Sub
-
-    ' === COMBOBOX FILTER ===
     Private Sub cmbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCategory.SelectedIndexChanged
         LoadProducts(txtSearch.Text.Trim(), cmbCategory.Text)
     End Sub
 
-    ' === ADD PRODUCT ===
-    Private Sub AddProduct_Click(sender As Object, e As EventArgs) Handles btnAddProduct.Click
-        Dim frm As New AddEditForm()
-        frm.Text = "Add Product"
-        frm.Mode = "Add"
-        frm.ShowDialog()
-
-        LoadProducts(txtSearch.Text.Trim(), cmbCategory.Text)
-    End Sub
-
-    ' === SORTING BY QUANTITY CLICK ===
     Private Sub lblQuantity_Click(sender As Object, e As EventArgs) Handles lblQuantity.Click
         sortAscending = Not sortAscending
-
         If sortAscending Then
             lblQuantity.Text = "Quantity ▲"
             lblQuantity.ForeColor = Color.IndianRed
@@ -288,19 +232,38 @@ Public Class InventoryControl
             lblQuantity.Text = "Quantity ▼"
             lblQuantity.ForeColor = Color.ForestGreen
         End If
-
         LoadProducts(txtSearch.Text.Trim(), cmbCategory.Text)
     End Sub
 
-    ' === SEARCH AS YOU TYPE (No Enter Needed) ===
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
-        searchTimer.Stop()
-        AddHandler searchTimer.Tick, AddressOf PerformSearch
-        searchTimer.Start()
-    End Sub
-
-    Private Sub PerformSearch(sender As Object, e As EventArgs)
-        searchTimer.Stop()
         LoadProducts(txtSearch.Text.Trim(), cmbCategory.Text)
     End Sub
+
+    Private Sub viewProd_Click(sender As Object, e As EventArgs) Handles viewProd.Click
+        If mySharedCart Is Nothing OrElse mySharedCart.IsDisposed Then
+            mySharedCart = New CartControl()
+            AddHandler mySharedCart.FormClosed, Sub() mySharedCart = Nothing
+        End If
+
+        mySharedCart.Show()
+        mySharedCart.BringToFront()
+    End Sub
+
+    Private Sub AddProductToCart(ProductID As Integer, Name As String, Category As String, Price As Decimal, Quantity As Integer)
+        If mySharedCart Is Nothing OrElse mySharedCart.IsDisposed Then
+            mySharedCart = New CartControl()
+            AddHandler mySharedCart.FormClosed, Sub() mySharedCart = Nothing
+        End If
+
+        mySharedCart.AddToCart(ProductID, Name, Quantity, Price)
+
+        MessageBox.Show($"Added {Quantity} x {Name} to cart!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        If Not mySharedCart.Visible Then
+            mySharedCart.Show()
+        End If
+
+        mySharedCart.BringToFront()
+    End Sub
+
 End Class

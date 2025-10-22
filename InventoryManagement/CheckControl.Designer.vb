@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class InventoryControl
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class CheckControl
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,12 @@ Partial Class InventoryControl
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.cmbCategory = New System.Windows.Forms.ComboBox()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.viewProd = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.cmbCategory = New System.Windows.Forms.ComboBox()
         Me.tlpHeader = New System.Windows.Forms.TableLayoutPanel()
         Me.Productlbl = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -31,24 +33,40 @@ Partial Class InventoryControl
         Me.lblQuantity = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Categorylbl = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btnAddProduct = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.tlpProduct = New System.Windows.Forms.TableLayoutPanel()
-        Me.tlpHeader.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.tlpHeader.SuspendLayout()
         Me.SuspendLayout()
         '
-        'cmbCategory
+        'TableLayoutPanel1
         '
-        Me.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbCategory.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCategory.FormattingEnabled = True
-        Me.cmbCategory.Location = New System.Drawing.Point(1011, 3)
-        Me.cmbCategory.Name = "cmbCategory"
-        Me.cmbCategory.Size = New System.Drawing.Size(123, 26)
-        Me.cmbCategory.TabIndex = 1
+        Me.TableLayoutPanel1.ColumnCount = 3
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 394.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.99367!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.00633!))
+        Me.TableLayoutPanel1.Controls.Add(Me.viewProd, 2, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.txtSearch, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.cmbCategory, 1, 0)
+        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 1
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1054, 33)
+        Me.TableLayoutPanel1.TabIndex = 6
+        '
+        'viewProd
+        '
+        Me.viewProd.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.viewProd.FlatAppearance.BorderSize = 0
+        Me.viewProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.viewProd.Font = New System.Drawing.Font("Myanmar Text", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.viewProd.Location = New System.Drawing.Point(542, 3)
+        Me.viewProd.Name = "viewProd"
+        Me.viewProd.Size = New System.Drawing.Size(111, 27)
+        Me.viewProd.TabIndex = 3
+        Me.viewProd.Text = "View Cart" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.viewProd.UseVisualStyleBackColor = False
         '
         'txtSearch
         '
@@ -58,6 +76,16 @@ Partial Class InventoryControl
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(376, 26)
         Me.txtSearch.TabIndex = 0
+        '
+        'cmbCategory
+        '
+        Me.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbCategory.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCategory.FormattingEnabled = True
+        Me.cmbCategory.Location = New System.Drawing.Point(397, 3)
+        Me.cmbCategory.Name = "cmbCategory"
+        Me.cmbCategory.Size = New System.Drawing.Size(123, 26)
+        Me.cmbCategory.TabIndex = 1
         '
         'tlpHeader
         '
@@ -79,15 +107,16 @@ Partial Class InventoryControl
         Me.tlpHeader.Name = "tlpHeader"
         Me.tlpHeader.RowCount = 1
         Me.tlpHeader.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpHeader.Size = New System.Drawing.Size(1260, 50)
-        Me.tlpHeader.TabIndex = 1
+        Me.tlpHeader.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.tlpHeader.Size = New System.Drawing.Size(1054, 50)
+        Me.tlpHeader.TabIndex = 7
         '
         'Productlbl
         '
         Me.Productlbl.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Productlbl.Location = New System.Drawing.Point(3, 0)
         Me.Productlbl.Name = "Productlbl"
-        Me.Productlbl.Size = New System.Drawing.Size(203, 50)
+        Me.Productlbl.Size = New System.Drawing.Size(165, 50)
         Me.Productlbl.TabIndex = 1
         Me.Productlbl.Text = "Product ID"
         Me.Productlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -95,9 +124,9 @@ Partial Class InventoryControl
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(212, 0)
+        Me.Label1.Location = New System.Drawing.Point(178, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(203, 50)
+        Me.Label1.Size = New System.Drawing.Size(165, 50)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Name"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -105,9 +134,9 @@ Partial Class InventoryControl
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(839, 0)
+        Me.Label3.Location = New System.Drawing.Point(703, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(203, 50)
+        Me.Label3.Size = New System.Drawing.Size(165, 50)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Price"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -115,9 +144,9 @@ Partial Class InventoryControl
         'lblQuantity
         '
         Me.lblQuantity.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblQuantity.Location = New System.Drawing.Point(630, 0)
+        Me.lblQuantity.Location = New System.Drawing.Point(528, 0)
         Me.lblQuantity.Name = "lblQuantity"
-        Me.lblQuantity.Size = New System.Drawing.Size(203, 50)
+        Me.lblQuantity.Size = New System.Drawing.Size(165, 50)
         Me.lblQuantity.TabIndex = 3
         Me.lblQuantity.Text = "Quantity"
         Me.lblQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -125,9 +154,9 @@ Partial Class InventoryControl
         'Label4
         '
         Me.Label4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(1048, 0)
+        Me.Label4.Location = New System.Drawing.Point(878, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(209, 50)
+        Me.Label4.Size = New System.Drawing.Size(165, 50)
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "Actions"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -135,106 +164,58 @@ Partial Class InventoryControl
         'Categorylbl
         '
         Me.Categorylbl.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Categorylbl.Location = New System.Drawing.Point(421, 0)
+        Me.Categorylbl.Location = New System.Drawing.Point(353, 0)
         Me.Categorylbl.Name = "Categorylbl"
-        Me.Categorylbl.Size = New System.Drawing.Size(203, 50)
+        Me.Categorylbl.Size = New System.Drawing.Size(165, 50)
         Me.Categorylbl.TabIndex = 6
-        Me.Categorylbl.Text = "Stock"
+        Me.Categorylbl.Text = "Category"
         Me.Categorylbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'TableLayoutPanel1
-        '
-        Me.TableLayoutPanel1.ColumnCount = 10
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 558.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.48387!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.992669!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.992669!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.238086!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.241752!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.227088!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.38819!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.09477!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.69024!))
-        Me.TableLayoutPanel1.Controls.Add(Me.txtSearch, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.btnAddProduct, 9, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.cmbCategory, 8, 0)
-        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 1
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1260, 33)
-        Me.TableLayoutPanel1.TabIndex = 3
-        '
-        'btnAddProduct
-        '
-        Me.btnAddProduct.BackColor = System.Drawing.Color.LimeGreen
-        Me.btnAddProduct.FlatAppearance.BorderSize = 0
-        Me.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAddProduct.Font = New System.Drawing.Font("Myanmar Text", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddProduct.Location = New System.Drawing.Point(1143, 3)
-        Me.btnAddProduct.Name = "btnAddProduct"
-        Me.btnAddProduct.Size = New System.Drawing.Size(111, 27)
-        Me.btnAddProduct.TabIndex = 2
-        Me.btnAddProduct.Text = "+ Add Product"
-        Me.btnAddProduct.UseVisualStyleBackColor = False
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.TableLayoutPanel1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1260, 33)
-        Me.Panel1.TabIndex = 4
         '
         'tlpProduct
         '
         Me.tlpProduct.AutoSize = True
         Me.tlpProduct.ColumnCount = 6
         Me.tlpProduct.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.447471!))
-        Me.tlpProduct.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167.0!))
-        Me.tlpProduct.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 168.0!))
-        Me.tlpProduct.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166.0!))
-        Me.tlpProduct.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167.0!))
         Me.tlpProduct.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 172.0!))
-        Me.tlpProduct.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tlpProduct.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 172.0!))
+        Me.tlpProduct.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171.0!))
+        Me.tlpProduct.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 169.0!))
+        Me.tlpProduct.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173.0!))
         Me.tlpProduct.Location = New System.Drawing.Point(0, 83)
         Me.tlpProduct.Margin = New System.Windows.Forms.Padding(0)
         Me.tlpProduct.Name = "tlpProduct"
         Me.tlpProduct.RowCount = 1
         Me.tlpProduct.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpProduct.Size = New System.Drawing.Size(1260, 449)
-        Me.tlpProduct.TabIndex = 2
+        Me.tlpProduct.Size = New System.Drawing.Size(1054, 386)
+        Me.tlpProduct.TabIndex = 8
         '
-        'InventoryControl
+        'CheckControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.tlpProduct)
         Me.Controls.Add(Me.tlpHeader)
-        Me.Controls.Add(Me.Panel1)
-        Me.Name = "InventoryControl"
-        Me.Size = New System.Drawing.Size(1260, 532)
-        Me.tlpHeader.ResumeLayout(False)
+        Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Name = "CheckControl"
+        Me.Size = New System.Drawing.Size(1054, 469)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
+        Me.tlpHeader.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmbCategory As ComboBox
+
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents viewProd As Button
     Friend WithEvents txtSearch As TextBox
+    Friend WithEvents cmbCategory As ComboBox
     Friend WithEvents tlpHeader As TableLayoutPanel
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label1 As Label
     Friend WithEvents Productlbl As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label3 As Label
     Friend WithEvents lblQuantity As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Categorylbl As Label
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents tlpProduct As TableLayoutPanel
-    Friend WithEvents btnAddProduct As Button
 End Class

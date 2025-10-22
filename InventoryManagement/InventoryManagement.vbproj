@@ -87,17 +87,24 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckoutCtrl.Designer.vb">
-      <DependentUpon>CheckoutCtrl.vb</DependentUpon>
+    <Compile Include="AddEditForm.Designer.vb">
+      <DependentUpon>AddEditForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="CheckoutCtrl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="editform.Designer.vb">
-      <DependentUpon>editform.vb</DependentUpon>
-    </Compile>
-    <Compile Include="editform.vb">
+    <Compile Include="AddEditForm.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CartControl.Designer.vb">
+      <DependentUpon>CartControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CartControl.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CartData.vb" />
+    <Compile Include="CheckControl.Designer.vb">
+      <DependentUpon>CheckControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CheckControl.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="HistoryCtrl.Designer.vb">
       <DependentUpon>HistoryCtrl.vb</DependentUpon>
@@ -147,16 +154,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="AddToCartControl.Designer.vb">
+      <DependentUpon>AddToCartControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddToCartControl.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceiptForm.Designer.vb">
+      <DependentUpon>ReceiptForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CartControl.resx">
+      <DependentUpon>CartControl.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChangePinForm.resx">
       <DependentUpon>ChangePinForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckoutCtrl.resx">
-      <DependentUpon>CheckoutCtrl.vb</DependentUpon>
+    <EmbeddedResource Include="AddEditForm.resx">
+      <DependentUpon>AddEditForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="editform.resx">
-      <DependentUpon>editform.vb</DependentUpon>
+    <EmbeddedResource Include="CheckControl.resx">
+      <DependentUpon>CheckControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistoryCtrl.resx">
       <DependentUpon>HistoryCtrl.vb</DependentUpon>
@@ -175,6 +197,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddToCartControl.resx">
+      <DependentUpon>AddToCartControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReceiptForm.resx">
+      <DependentUpon>ReceiptForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
