@@ -24,18 +24,19 @@ Partial Class ReceiptForm
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.tblReceipt = New System.Windows.Forms.TableLayoutPanel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblTotal = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.lblChange = New System.Windows.Forms.Label()
         Me.lblCash = New System.Windows.Forms.Label()
         Me.lblDateTime = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tblReceipt = New System.Windows.Forms.TableLayoutPanel()
+        Me.lblTransacID = New System.Windows.Forms.Label()
+        Me.lblCashier = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -63,24 +64,46 @@ Partial Class ReceiptForm
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Receipt"
         '
-        'tblReceipt
+        'lblTotal
         '
-        Me.tblReceipt.ColumnCount = 5
-        Me.tblReceipt.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.55427!))
-        Me.tblReceipt.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.09238!))
-        Me.tblReceipt.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.93764!))
-        Me.tblReceipt.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.32333!))
-        Me.tblReceipt.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.63049!))
-        Me.tblReceipt.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tblReceipt.Location = New System.Drawing.Point(0, 52)
-        Me.tblReceipt.Name = "tblReceipt"
-        Me.tblReceipt.RowCount = 1
-        Me.tblReceipt.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tblReceipt.Size = New System.Drawing.Size(435, 293)
-        Me.tblReceipt.TabIndex = 3
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Location = New System.Drawing.Point(223, 10)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(34, 13)
+        Me.lblTotal.TabIndex = 0
+        Me.lblTotal.Text = "Total:"
+        '
+        'lblChange
+        '
+        Me.lblChange.AutoSize = True
+        Me.lblChange.Location = New System.Drawing.Point(223, 56)
+        Me.lblChange.Name = "lblChange"
+        Me.lblChange.Size = New System.Drawing.Size(47, 13)
+        Me.lblChange.TabIndex = 1
+        Me.lblChange.Text = "Change:"
+        '
+        'lblCash
+        '
+        Me.lblCash.AutoSize = True
+        Me.lblCash.Location = New System.Drawing.Point(223, 33)
+        Me.lblCash.Name = "lblCash"
+        Me.lblCash.Size = New System.Drawing.Size(77, 13)
+        Me.lblCash.TabIndex = 2
+        Me.lblCash.Text = "Receive Cash:"
+        '
+        'lblDateTime
+        '
+        Me.lblDateTime.AutoSize = True
+        Me.lblDateTime.Location = New System.Drawing.Point(3, 33)
+        Me.lblDateTime.Name = "lblDateTime"
+        Me.lblDateTime.Size = New System.Drawing.Size(80, 13)
+        Me.lblDateTime.TabIndex = 3
+        Me.lblDateTime.Text = "Date and Time:"
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.lblCashier)
+        Me.Panel2.Controls.Add(Me.lblTransacID)
         Me.Panel2.Controls.Add(Me.lblDateTime)
         Me.Panel2.Controls.Add(Me.lblCash)
         Me.Panel2.Controls.Add(Me.lblChange)
@@ -91,28 +114,57 @@ Partial Class ReceiptForm
         Me.Panel2.Size = New System.Drawing.Size(435, 87)
         Me.Panel2.TabIndex = 4
         '
-        'lblTotal
+        'Label2
         '
-        Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(3, 10)
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(34, 13)
-        Me.lblTotal.TabIndex = 0
-        Me.lblTotal.Text = "Total:"
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(3, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(81, 34)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "ProductName"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label3
+        '
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(111, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(81, 34)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Quantity"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label4
+        '
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(219, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(81, 34)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "Price"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label5
+        '
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(327, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(81, 34)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "SubTotal"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.ColumnCount = 5
+        Me.TableLayoutPanel1.ColumnCount = 4
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Label5, 4, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label4, 3, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label3, 2, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label2, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label6, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label3, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label4, 2, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label5, 3, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 52)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -121,87 +173,38 @@ Partial Class ReceiptForm
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(435, 34)
         Me.TableLayoutPanel1.TabIndex = 5
         '
-        'Label5
+        'tblReceipt
         '
-        Me.Label5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(351, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(81, 34)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "SubTotal"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.tblReceipt.ColumnCount = 4
+        Me.tblReceipt.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.82759!))
+        Me.tblReceipt.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.82759!))
+        Me.tblReceipt.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.82759!))
+        Me.tblReceipt.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.28736!))
+        Me.tblReceipt.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tblReceipt.Location = New System.Drawing.Point(0, 52)
+        Me.tblReceipt.Name = "tblReceipt"
+        Me.tblReceipt.RowCount = 1
+        Me.tblReceipt.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tblReceipt.Size = New System.Drawing.Size(435, 293)
+        Me.tblReceipt.TabIndex = 3
         '
-        'Label4
+        'lblTransacID
         '
-        Me.Label4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(264, 0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(81, 34)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Price"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblTransacID.AutoSize = True
+        Me.lblTransacID.Location = New System.Drawing.Point(3, 10)
+        Me.lblTransacID.Name = "lblTransacID"
+        Me.lblTransacID.Size = New System.Drawing.Size(80, 13)
+        Me.lblTransacID.TabIndex = 4
+        Me.lblTransacID.Text = "Transaction ID:"
         '
-        'Label3
+        'lblCashier
         '
-        Me.Label3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(177, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(81, 34)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Quantity"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label2
-        '
-        Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(90, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(81, 34)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "ProductName"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label6
-        '
-        Me.Label6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(3, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(81, 34)
-        Me.Label6.TabIndex = 0
-        Me.Label6.Text = "ProductID"
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblChange
-        '
-        Me.lblChange.AutoSize = True
-        Me.lblChange.Location = New System.Drawing.Point(219, 10)
-        Me.lblChange.Name = "lblChange"
-        Me.lblChange.Size = New System.Drawing.Size(47, 13)
-        Me.lblChange.TabIndex = 1
-        Me.lblChange.Text = "Change:"
-        '
-        'lblCash
-        '
-        Me.lblCash.AutoSize = True
-        Me.lblCash.Location = New System.Drawing.Point(3, 46)
-        Me.lblCash.Name = "lblCash"
-        Me.lblCash.Size = New System.Drawing.Size(77, 13)
-        Me.lblCash.TabIndex = 2
-        Me.lblCash.Text = "Receive Cash:"
-        '
-        'lblDateTime
-        '
-        Me.lblDateTime.AutoSize = True
-        Me.lblDateTime.Location = New System.Drawing.Point(219, 46)
-        Me.lblDateTime.Name = "lblDateTime"
-        Me.lblDateTime.Size = New System.Drawing.Size(80, 13)
-        Me.lblDateTime.TabIndex = 3
-        Me.lblDateTime.Text = "Date and Time:"
+        Me.lblCashier.AutoSize = True
+        Me.lblCashier.Location = New System.Drawing.Point(5, 56)
+        Me.lblCashier.Name = "lblCashier"
+        Me.lblCashier.Size = New System.Drawing.Size(45, 13)
+        Me.lblCashier.TabIndex = 5
+        Me.lblCashier.Text = "Cashier:"
         '
         'ReceiptForm
         '
@@ -225,16 +228,17 @@ Partial Class ReceiptForm
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
-    Friend WithEvents tblReceipt As TableLayoutPanel
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents lblTotal As Label
-    Friend WithEvents lblDateTime As Label
-    Friend WithEvents lblCash As Label
     Friend WithEvents lblChange As Label
+    Friend WithEvents lblCash As Label
+    Friend WithEvents lblDateTime As Label
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents tblReceipt As TableLayoutPanel
+    Friend WithEvents lblCashier As Label
+    Friend WithEvents lblTransacID As Label
 End Class

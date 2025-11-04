@@ -103,6 +103,7 @@ Partial Class AddToCartControl
         Me.Controls.Add(Me.txtQty)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "AddToCartControl"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "QuantityForm"
         Me.PanelHeader.ResumeLayout(False)
         Me.ResumeLayout(False)

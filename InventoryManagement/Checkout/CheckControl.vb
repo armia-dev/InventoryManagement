@@ -255,15 +255,10 @@ Public Class CheckControl
             AddHandler mySharedCart.FormClosed, Sub() mySharedCart = Nothing
         End If
 
-        mySharedCart.AddToCart(ProductID, Name, Quantity, Price)
 
         MessageBox.Show($"Added {Quantity} x {Name} to cart!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-        If Not mySharedCart.Visible Then
-            mySharedCart.Show()
-        End If
 
-        mySharedCart.BringToFront()
     End Sub
 
 End Class

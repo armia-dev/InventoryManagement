@@ -65,6 +65,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -87,35 +88,48 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddEditForm.Designer.vb">
+    <Compile Include="DashBoard\Dashboard.Designer.vb">
+      <DependentUpon>Dashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard\Dashboard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Inventory\AddEditForm.Designer.vb">
       <DependentUpon>AddEditForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="AddEditForm.vb">
+    <Compile Include="Inventory\AddEditForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CartControl.Designer.vb">
+    <Compile Include="Checkout\CartControl.Designer.vb">
       <DependentUpon>CartControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="CartControl.vb">
+    <Compile Include="Checkout\CartControl.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CartData.vb" />
-    <Compile Include="CheckControl.Designer.vb">
+    <Compile Include="Checkout\CheckControl.Designer.vb">
       <DependentUpon>CheckControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="CheckControl.vb">
+    <Compile Include="Checkout\CheckControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="HistoryCtrl.Designer.vb">
+    <Compile Include="Module1.vb" />
+    <Compile Include="Transactions\Details.Designer.vb">
+      <DependentUpon>Details.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\Details.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\HistoryCtrl.Designer.vb">
       <DependentUpon>HistoryCtrl.vb</DependentUpon>
     </Compile>
-    <Compile Include="HistoryCtrl.vb">
+    <Compile Include="Transactions\HistoryCtrl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InventoryControl.Designer.vb">
+    <Compile Include="Inventory\InventoryControl.Designer.vb">
       <DependentUpon>InventoryControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="InventoryControl.vb">
+    <Compile Include="Inventory\InventoryControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="layouthelper.vb" />
@@ -125,10 +139,10 @@
     <Compile Include="ChangePinForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.vb">
+    <Compile Include="Login\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.vb">
+    <Compile Include="Login\LoginForm.Designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
@@ -154,10 +168,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="AddToCartControl.Designer.vb">
+    <Compile Include="Checkout\AddToCartControl.Designer.vb">
       <DependentUpon>AddToCartControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="AddToCartControl.vb">
+    <Compile Include="Checkout\AddToCartControl.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReceiptForm.Designer.vb">
@@ -166,27 +180,42 @@
     <Compile Include="ReceiptForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Login\stafflogin.Designer.vb">
+      <DependentUpon>stafflogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Login\stafflogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="staff\staffmainmenuform.Designer.vb">
+      <DependentUpon>staffmainmenuform.vb</DependentUpon>
+    </Compile>
+    <Compile Include="staff\staffmainmenuform.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CartControl.resx">
+    <EmbeddedResource Include="Checkout\CartControl.resx">
       <DependentUpon>CartControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePinForm.resx">
       <DependentUpon>ChangePinForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddEditForm.resx">
+    <EmbeddedResource Include="DashBoard\Dashboard.resx">
+      <DependentUpon>Dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory\AddEditForm.resx">
       <DependentUpon>AddEditForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckControl.resx">
+    <EmbeddedResource Include="Checkout\CheckControl.resx">
       <DependentUpon>CheckControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HistoryCtrl.resx">
+    <EmbeddedResource Include="Transactions\HistoryCtrl.resx">
       <DependentUpon>HistoryCtrl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryControl.resx">
+    <EmbeddedResource Include="Inventory\InventoryControl.resx">
       <DependentUpon>InventoryControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenuForm.resx">
@@ -198,11 +227,17 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddToCartControl.resx">
+    <EmbeddedResource Include="Checkout\AddToCartControl.resx">
       <DependentUpon>AddToCartControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReceiptForm.resx">
       <DependentUpon>ReceiptForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\stafflogin.resx">
+      <DependentUpon>stafflogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="staff\staffmainmenuform.resx">
+      <DependentUpon>staffmainmenuform.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -218,5 +253,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

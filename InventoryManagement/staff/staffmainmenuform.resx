@@ -117,23 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnMax.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAALZJREFUSEvtljkOwjAUBQcJGrgSy4kQ6+FYKiiACwDXQWNZKIpFZaMU8Ui/SIo3
-        /nbzoI+MgBmwBLbApsCYY94UGLaFMgdewBU4AucCY455zyhO8FQ3YBy/BwVGJsADWDdcX/bAof2zEG7s
-        Ugk74NQ4YSnM86p944QqzaVKA1WaS5UGqjSXKg10Iu2kOfyrI5l3/9WRFsAbuMSNvercMcc8W6ZtM8He
-        q3gVr9o3zh1zzFNofs/4AOReaJGXGaj0AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="Guna2Elipse1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="Guna2DragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>141, 17</value>
-  </metadata>
-  <metadata name="Guna2DragControl2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>300, 17</value>
-  </metadata>
 </root>

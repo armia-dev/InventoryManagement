@@ -22,7 +22,7 @@ Public Class InventoryControl
 
         ' ✅ Set initial sort flag display
         lblQuantity.Font = New Font("Segoe UI", 10, FontStyle.Bold)
-        lblQuantity.Text = "Quantity ▼"
+        lblQuantity.Text = "Quantity "
         lblQuantity.ForeColor = Color.ForestGreen
 
         ' Load products (initial load: Quantity DESC)
@@ -47,10 +47,10 @@ Public Class InventoryControl
         tlpProduct.Margin = New Padding(0)
         tlpProduct.Padding = New Padding(0)
 
-        tlpProduct.ColumnCount = 6
+        tlpProduct.ColumnCount = 5
         tlpProduct.ColumnStyles.Clear()
-        For i As Integer = 0 To 5
-            tlpProduct.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F / 6.0F))
+        For i As Integer = 0 To 4
+            tlpProduct.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F / 5.0F))
         Next
 
         pnlScroll.Controls.Add(tlpProduct)
@@ -118,9 +118,8 @@ Public Class InventoryControl
                             tlpProduct.RowCount += 1
 
                             ' === Add Product Info Cells ===
-                            AddProductCell(rowIndex, 0, reader("ProductID").ToString(), baseFont)
-                            AddProductCell(rowIndex, 1, reader("Name").ToString(), baseFont)
-                            AddProductCell(rowIndex, 2, reader("Category").ToString(), baseFont)
+                            AddProductCell(rowIndex, 0, reader("Name").ToString(), baseFont)
+                            AddProductCell(rowIndex, 1, reader("Category").ToString(), baseFont)
 
                             ' === Quantity with color ===
                             Dim qty As Integer = Convert.ToInt32(reader("Quantity"))
@@ -134,42 +133,46 @@ Public Class InventoryControl
                                 .Height = 35,
                                 .ForeColor = If(qty < 16, Color.IndianRed, Color.Black)
                             }
-                            tlpProduct.Controls.Add(lblQty, 3, rowIndex)
+                            tlpProduct.Controls.Add(lblQty, 2, rowIndex)
 
                             ' === Price ===
-                            AddProductCell(rowIndex, 4, "₱" & Convert.ToDecimal(reader("Price")).ToString("N2"), baseFont)
+                            AddProductCell(rowIndex, 3, "₱" & Convert.ToDecimal(reader("Price")).ToString("N2"), baseFont)
 
                             ' === Actions (edit/delete) ===
                             Dim pnlActions As New FlowLayoutPanel With {
                                 .FlowDirection = FlowDirection.LeftToRight,
-                                .AutoSize = True,
+                                .Dock = DockStyle.Fill,
+                                .AutoSize = False,
                                 .Margin = New Padding(0),
-                                .Padding = New Padding(0)
+                                .Padding = New Padding(0),
+                                .WrapContents = False,
+                                .Anchor = AnchorStyles.None
                             }
 
                             Dim btnEdit As New Button With {
                                 .Text = "✏️",
-                                .Width = 28,
-                                .Height = 28,
+                                .Width = 35,
+                                .Height = 30,
                                 .FlatStyle = FlatStyle.Flat,
                                 .BackColor = Color.LightYellow,
-                                .Tag = reader("ProductID")
+                                .Tag = reader("ProductID"),
+                                .Margin = New Padding(2, 2, 1, 2)
                             }
                             AddHandler btnEdit.Click, AddressOf Me.EditProduct
-
                             Dim btnDelete As New Button With {
                                 .Text = "🗑️",
-                                .Width = 28,
-                                .Height = 28,
+                                .Width = 35,
+                                .Height = 30,
                                 .FlatStyle = FlatStyle.Flat,
                                 .BackColor = Color.MistyRose,
-                                .Tag = reader("ProductID")
+                                .Tag = reader("ProductID"),
+                                .Margin = New Padding(1, 2, 2, 2)
                             }
                             AddHandler btnDelete.Click, AddressOf Me.DeleteProduct
 
                             pnlActions.Controls.Add(btnEdit)
                             pnlActions.Controls.Add(btnDelete)
-                            tlpProduct.Controls.Add(pnlActions, 5, rowIndex)
+                            tlpProduct.Controls.Add(pnlActions, 4, rowIndex)
 
                             rowIndex += 1
                         End While
@@ -282,10 +285,10 @@ Public Class InventoryControl
         sortAscending = Not sortAscending
 
         If sortAscending Then
-            lblQuantity.Text = "Quantity ▲"
+            lblQuantity.Text = "Quantity ▼"
             lblQuantity.ForeColor = Color.IndianRed
         Else
-            lblQuantity.Text = "Quantity ▼"
+            lblQuantity.Text = "Quantity ▲"
             lblQuantity.ForeColor = Color.ForestGreen
         End If
 
@@ -303,4 +306,6 @@ Public Class InventoryControl
         searchTimer.Stop()
         LoadProducts(txtSearch.Text.Trim(), cmbCategory.Text)
     End Sub
+
+
 End Class
