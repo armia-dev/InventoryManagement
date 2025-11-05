@@ -5,9 +5,31 @@ Public Class AddEditForm
     Public Property ProductID As Integer
 
     Private Sub AddEditForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LoadCategories()
         If Mode = "Edit" Then
             LoadProductData()
         End If
+    End Sub
+
+    ' === LOAD CATEGORIES INTO COMBOBOX ===
+    Private Sub LoadCategories()
+        Try
+            Dim connectionString As String = "server=localhost;user=root;password=;database=inventorymanagement"
+            Using con As New MySqlConnection(connectionString)
+                con.Open()
+                Dim query As String = "SELECT DISTINCT Category FROM products ORDER BY Category ASC"
+                Using cmd As New MySqlCommand(query, con)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        cmbCategory.Items.Clear()
+                        While reader.Read()
+                            cmbCategory.Items.Add(reader("Category").ToString())
+                        End While
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error loading categories: " & ex.Message)
+        End Try
     End Sub
 
     ' === LOAD EXISTING PRODUCT DATA WHEN EDITING ===
@@ -22,7 +44,7 @@ Public Class AddEditForm
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
                             txtName.Text = reader("Name").ToString()
-                            txtCategory.Text = reader("Category").ToString()
+                            cmbCategory.Text = reader("Category").ToString()
                             txtQuantity.Text = reader("Quantity").ToString()
                             txtPrice.Text = reader("Price").ToString()
                         End If
@@ -66,7 +88,7 @@ Public Class AddEditForm
                 Dim query As String = "INSERT INTO products (Name, Category, Quantity, Price) VALUES (@name, @category, @quantity, @price)"
                 Using cmd As New MySqlCommand(query, con)
                     cmd.Parameters.AddWithValue("@name", txtName.Text)
-                    cmd.Parameters.AddWithValue("@category", txtCategory.Text)
+                    cmd.Parameters.AddWithValue("@category", cmbCategory.Text)
                     cmd.Parameters.AddWithValue("@quantity", Convert.ToInt32(txtQuantity.Text))
                     cmd.Parameters.AddWithValue("@price", Convert.ToDecimal(txtPrice.Text))
                     cmd.ExecuteNonQuery()
@@ -103,7 +125,7 @@ Public Class AddEditForm
                 Dim query As String = "UPDATE products SET Name=@name, Category=@category, Quantity=@quantity, Price=@price WHERE ProductID=@id"
                 Using cmd As New MySqlCommand(query, con)
                     cmd.Parameters.AddWithValue("@name", txtName.Text)
-                    cmd.Parameters.AddWithValue("@category", txtCategory.Text)
+                    cmd.Parameters.AddWithValue("@category", cmbCategory.Text)
                     cmd.Parameters.AddWithValue("@quantity", Convert.ToInt32(txtQuantity.Text))
                     cmd.Parameters.AddWithValue("@price", Convert.ToDecimal(txtPrice.Text))
                     cmd.Parameters.AddWithValue("@id", ProductID)

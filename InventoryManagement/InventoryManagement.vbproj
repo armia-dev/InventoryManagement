@@ -94,6 +94,30 @@
     <Compile Include="DashBoard\Dashboard.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Description Controls\CheckoutTabs.Designer.vb">
+      <DependentUpon>CheckoutTabs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Description Controls\CheckoutTabs.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Description Controls\DashboardTabs.Designer.vb">
+      <DependentUpon>DashboardTabs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Description Controls\DashboardTabs.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Description Controls\InventoryTabs.Designer.vb">
+      <DependentUpon>InventoryTabs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Description Controls\InventoryTabs.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Description Controls\TransactionTabs.Designer.vb">
+      <DependentUpon>TransactionTabs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Description Controls\TransactionTabs.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Inventory\AddEditForm.Designer.vb">
       <DependentUpon>AddEditForm.vb</DependentUpon>
     </Compile>
@@ -202,6 +226,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DashBoard\Dashboard.resx">
       <DependentUpon>Dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Description Controls\CheckoutTabs.resx">
+      <DependentUpon>CheckoutTabs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Description Controls\DashboardTabs.resx">
+      <DependentUpon>DashboardTabs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Description Controls\InventoryTabs.resx">
+      <DependentUpon>InventoryTabs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Description Controls\TransactionTabs.resx">
+      <DependentUpon>TransactionTabs.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory\AddEditForm.resx">
       <DependentUpon>AddEditForm.vb</DependentUpon>

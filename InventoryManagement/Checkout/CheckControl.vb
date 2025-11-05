@@ -127,6 +127,7 @@ Public Class CheckControl
                                 .FlatStyle = FlatStyle.Flat,
                                 .BackColor = Color.PaleGreen,
                                 .Font = New Font("Segoe UI", 10, FontStyle.Bold),
+                                .Anchor = AnchorStyles.None,
                                 .Tag = New With {
                                     .ProductID = reader("ProductID"),
                                     .Name = reader("Name"),
@@ -136,7 +137,6 @@ Public Class CheckControl
                             }
                             AddHandler btnAddToCart.Click, AddressOf AddToCart_Click
                             tlpProduct.Controls.Add(btnAddToCart, 5, rowIndex)
-
                             rowIndex += 1
                         End While
                     End Using

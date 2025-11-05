@@ -27,9 +27,7 @@ Partial Class MainMenuForm
         Me.Dashboard = New System.Windows.Forms.Button()
         Me.LogoutBtn = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.panelDescription = New System.Windows.Forms.Panel()
         Me.btnMax = New System.Windows.Forms.Button()
-        Me.btnMin = New System.Windows.Forms.Button()
         Me.panelMain = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -39,13 +37,13 @@ Partial Class MainMenuForm
         Me.btnTransac = New System.Windows.Forms.Button()
         Me.Guna2Elipse1 = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
         Me.Guna2DragControl1 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
-        Me.Guna2DragControl2 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
+        Me.panelDescription = New System.Windows.Forms.Panel()
         Me.Panel3.SuspendLayout()
-        Me.panelDescription.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
+        Me.panelDescription.SuspendLayout()
         Me.SuspendLayout()
         '
         'EmojiLabel
@@ -90,7 +88,7 @@ Partial Class MainMenuForm
         Me.InventoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.InventoryBtn.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.InventoryBtn.ForeColor = System.Drawing.Color.Black
-        Me.InventoryBtn.Location = New System.Drawing.Point(2, 74)
+        Me.InventoryBtn.Location = New System.Drawing.Point(2, 146)
         Me.InventoryBtn.Margin = New System.Windows.Forms.Padding(2)
         Me.InventoryBtn.Name = "InventoryBtn"
         Me.InventoryBtn.Size = New System.Drawing.Size(250, 68)
@@ -111,7 +109,7 @@ Partial Class MainMenuForm
         Me.Dashboard.Name = "Dashboard"
         Me.Dashboard.Size = New System.Drawing.Size(250, 68)
         Me.Dashboard.TabIndex = 4
-        Me.Dashboard.Text = "📜 Dashboard"
+        Me.Dashboard.Text = "🗔 Dashboard"
         Me.Dashboard.UseVisualStyleBackColor = False
         '
         'LogoutBtn
@@ -141,38 +139,16 @@ Partial Class MainMenuForm
         Me.Panel3.Size = New System.Drawing.Size(233, 89)
         Me.Panel3.TabIndex = 0
         '
-        'panelDescription
-        '
-        Me.panelDescription.BackColor = System.Drawing.Color.FromArgb(CType(CType(203, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(235, Byte), Integer))
-        Me.panelDescription.Controls.Add(Me.btnMax)
-        Me.panelDescription.Controls.Add(Me.btnMin)
-        Me.panelDescription.Dock = System.Windows.Forms.DockStyle.Top
-        Me.panelDescription.Location = New System.Drawing.Point(233, 0)
-        Me.panelDescription.Name = "panelDescription"
-        Me.panelDescription.Size = New System.Drawing.Size(1047, 72)
-        Me.panelDescription.TabIndex = 9
-        '
         'btnMax
         '
         Me.btnMax.FlatAppearance.BorderSize = 0
         Me.btnMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMax.Image = CType(resources.GetObject("btnMax.Image"), System.Drawing.Image)
-        Me.btnMax.Location = New System.Drawing.Point(986, 0)
+        Me.btnMax.Location = New System.Drawing.Point(1017, 0)
         Me.btnMax.Name = "btnMax"
-        Me.btnMax.Size = New System.Drawing.Size(40, 33)
+        Me.btnMax.Size = New System.Drawing.Size(30, 28)
         Me.btnMax.TabIndex = 2
         Me.btnMax.UseVisualStyleBackColor = True
-        '
-        'btnMin
-        '
-        Me.btnMin.FlatAppearance.BorderSize = 0
-        Me.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMin.Location = New System.Drawing.Point(940, 0)
-        Me.btnMin.Name = "btnMin"
-        Me.btnMin.Size = New System.Drawing.Size(40, 33)
-        Me.btnMin.TabIndex = 1
-        Me.btnMin.Text = "-"
-        Me.btnMin.UseVisualStyleBackColor = True
         '
         'panelMain
         '
@@ -220,8 +196,8 @@ Partial Class MainMenuForm
         'FlowLayoutPanel1
         '
         Me.FlowLayoutPanel1.Controls.Add(Me.Dashboard)
-        Me.FlowLayoutPanel1.Controls.Add(Me.InventoryBtn)
         Me.FlowLayoutPanel1.Controls.Add(Me.SalesBtn)
+        Me.FlowLayoutPanel1.Controls.Add(Me.InventoryBtn)
         Me.FlowLayoutPanel1.Controls.Add(Me.btnTransac)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
@@ -237,7 +213,7 @@ Partial Class MainMenuForm
         Me.SalesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SalesBtn.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.SalesBtn.ForeColor = System.Drawing.Color.Black
-        Me.SalesBtn.Location = New System.Drawing.Point(2, 146)
+        Me.SalesBtn.Location = New System.Drawing.Point(2, 74)
         Me.SalesBtn.Margin = New System.Windows.Forms.Padding(2)
         Me.SalesBtn.Name = "SalesBtn"
         Me.SalesBtn.Size = New System.Drawing.Size(250, 68)
@@ -269,12 +245,19 @@ Partial Class MainMenuForm
         'Guna2DragControl1
         '
         Me.Guna2DragControl1.DockIndicatorTransparencyValue = 0.6R
+        Me.Guna2DragControl1.DragOrientation = Guna.UI2.WinForms.Enums.DragOrientation.Horizontal
+        Me.Guna2DragControl1.DragStartTransparencyValue = 0.7R
         Me.Guna2DragControl1.UseTransparentDrag = True
         '
-        'Guna2DragControl2
+        'panelDescription
         '
-        Me.Guna2DragControl2.DockIndicatorTransparencyValue = 0.6R
-        Me.Guna2DragControl2.UseTransparentDrag = True
+        Me.panelDescription.BackColor = System.Drawing.Color.FromArgb(CType(CType(203, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(235, Byte), Integer))
+        Me.panelDescription.Controls.Add(Me.btnMax)
+        Me.panelDescription.Dock = System.Windows.Forms.DockStyle.Top
+        Me.panelDescription.Location = New System.Drawing.Point(233, 0)
+        Me.panelDescription.Name = "panelDescription"
+        Me.panelDescription.Size = New System.Drawing.Size(1047, 72)
+        Me.panelDescription.TabIndex = 9
         '
         'MainMenuForm
         '
@@ -292,11 +275,11 @@ Partial Class MainMenuForm
         Me.Text = "Main Menu"
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        Me.panelDescription.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.panelDescription.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -305,7 +288,6 @@ Partial Class MainMenuForm
     Friend WithEvents SubtitleLabel As Label
     Friend WithEvents InventoryBtn As Button
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents panelDescription As Panel
     Friend WithEvents panelMain As Panel
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents LogoutBtn As Button
@@ -313,11 +295,10 @@ Partial Class MainMenuForm
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Guna2Elipse1 As Guna.UI2.WinForms.Guna2Elipse
-    Friend WithEvents Guna2DragControl1 As Guna.UI2.WinForms.Guna2DragControl
-    Friend WithEvents Guna2DragControl2 As Guna.UI2.WinForms.Guna2DragControl
     Friend WithEvents SalesBtn As Button
     Friend WithEvents btnTransac As Button
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents btnMax As Button
-    Friend WithEvents btnMin As Button
+    Friend WithEvents Guna2DragControl1 As Guna.UI2.WinForms.Guna2DragControl
+    Friend WithEvents panelDescription As Panel
 End Class

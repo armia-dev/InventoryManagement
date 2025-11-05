@@ -206,11 +206,14 @@ Partial Class LoginForm
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(321, -2)
+        Me.btnExit.FlatAppearance.BorderSize = 0
+        Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExit.Location = New System.Drawing.Point(335, 0)
         Me.btnExit.Name = "btnExit"
-        Me.btnExit.Size = New System.Drawing.Size(54, 23)
+        Me.btnExit.Size = New System.Drawing.Size(38, 29)
         Me.btnExit.TabIndex = 0
-        Me.btnExit.Text = "Exit"
+        Me.btnExit.Text = "✖"
         Me.btnExit.UseVisualStyleBackColor = True
         '
         'lnkSwitchStaff

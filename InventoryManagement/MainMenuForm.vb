@@ -16,6 +16,12 @@
         Dim inventory As New InventoryControl()
         inventory.Dock = DockStyle.Fill
         panelMain.Controls.Add(inventory)
+
+        panelDescription.Controls.Clear()
+        Dim Invent As New InventoryTabs()
+        Invent.Dock = DockStyle.Left
+        panelDescription.Controls.Add(Invent)
+
     End Sub
 
     ' 🔹 SALES / CHECKOUT BUTTON
@@ -24,6 +30,12 @@
         Dim checkout As New CheckControl()
         checkout.Dock = DockStyle.Fill
         panelMain.Controls.Add(checkout)
+
+        panelDescription.Controls.Clear()
+        Dim check As New CheckoutTabs()
+        check.Dock = DockStyle.Left
+        panelDescription.Controls.Add(check)
+
     End Sub
 
     ' 🔹 DASHBOARD BUTTON
@@ -33,12 +45,27 @@
         dashboard.Dock = DockStyle.Fill
         panelMain.Controls.Add(dashboard)
 
+        panelDescription.Controls.Clear()
+        Dim Dash As New DashboardTabs()
+        Dash.Dock = DockStyle.Left
+        panelDescription.Controls.Add(Dash)
+
 
     End Sub
 
 
     ' 🔹 TRANSACTION HISTORY BUTTON
+    Private Sub btnTransac_Click(sender As Object, e As EventArgs) Handles btnTransac.Click
+        panelMain.Controls.Clear()
+        Dim dashboard As New HistoryCtrl()
+        dashboard.Dock = DockStyle.Fill
+        panelMain.Controls.Add(dashboard)
 
+        panelDescription.Controls.Clear()
+        Dim Transac As New TransactionTabs()
+        Transac.Dock = DockStyle.Left
+        panelDescription.Controls.Add(Transac)
+    End Sub
 
     ' 🔹 Highlight the last clicked button
     Private Sub Button_Click(sender As Object, e As EventArgs) _
@@ -69,7 +96,7 @@
     End Sub
 
     ' 🔹 MINIMIZE BUTTON
-    Private Sub btnMin_Click(sender As Object, e As EventArgs) Handles btnMin.Click
+    Private Sub btnMin_Click(sender As Object, e As EventArgs)
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
@@ -80,4 +107,24 @@
     Private Sub panelMain_Paint(sender As Object, e As PaintEventArgs) Handles panelMain.Paint
     End Sub
 
+    Private Sub FlowLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles FlowLayoutPanel1.Paint
+
+    End Sub
+
+    Private Sub MainMenuForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        panelMain.Controls.Clear()
+        Dim dashboard As New Dashboard()
+        dashboard.Dock = DockStyle.Fill
+        panelMain.Controls.Add(dashboard)
+
+        If LoggedInRole = "Admin" Then
+            InventoryBtn.Visible = True
+            btnTransac.Visible = True
+        Else
+            InventoryBtn.Visible = False
+            btnTransac.Visible = False
+        End If
+
+
+    End Sub
 End Class

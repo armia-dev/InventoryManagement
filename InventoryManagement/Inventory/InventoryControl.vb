@@ -139,10 +139,11 @@ Public Class InventoryControl
                             AddProductCell(rowIndex, 3, "₱" & Convert.ToDecimal(reader("Price")).ToString("N2"), baseFont)
 
                             ' === Actions (edit/delete) ===
+
                             Dim pnlActions As New FlowLayoutPanel With {
                                 .FlowDirection = FlowDirection.LeftToRight,
-                                .Dock = DockStyle.Fill,
-                                .AutoSize = False,
+                                .Dock = DockStyle.None,
+                                .AutoSize = True,
                                 .Margin = New Padding(0),
                                 .Padding = New Padding(0),
                                 .WrapContents = False,

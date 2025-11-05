@@ -22,19 +22,27 @@ Public Class StaffLogin
             If role IsNot Nothing Then
                 Select Case role.ToString().ToLower()
                     Case "staff"
+                        ' ✅ Store username and role globally
+                        LoggedInUsername = username
+                        LoggedInRole = "Staff"
+
                         MessageBox.Show("Welcome, " & username & " (Staff)!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        Dim staffMenu As New staffmainmenuform
+
+                        Dim staffMenu As New MainMenuForm
                         staffMenu.StartPosition = FormStartPosition.CenterScreen ' ✅ Centered form
                         staffMenu.Show()
                         Me.Hide()
+
                     Case "admin"
                         MessageBox.Show("Access Denied! Admins cannot log in using the Staff portal.", "Access Restricted", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
                     Case Else
                         MessageBox.Show("Unknown role detected. Contact system administrator.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 End Select
             Else
                 MessageBox.Show("Invalid Username or Password (PIN). Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+
         Catch ex As Exception
             MessageBox.Show("Database connection error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -42,7 +50,7 @@ Public Class StaffLogin
         End Try
     End Sub
     ' 🔹 EXIT BUTTON
-    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+    Private Sub btnExit_Click(sender As Object, e As EventArgs)
         Application.Exit()
     End Sub
     ' 🔹 PASSWORD FIELD

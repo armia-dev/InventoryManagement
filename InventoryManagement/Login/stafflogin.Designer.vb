@@ -28,7 +28,6 @@ Partial Class StaffLogin
         Me.SubtitleLabel = New System.Windows.Forms.Label()
         Me.EmojiLabel = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnExit = New System.Windows.Forms.Button()
         Me.StaffMenuForm = New System.Windows.Forms.Label()
         Me.PinPanel = New System.Windows.Forms.Panel()
         Me.txtPassword = New System.Windows.Forms.TextBox()
@@ -43,6 +42,7 @@ Partial Class StaffLogin
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lnkSwitchAdmin = New System.Windows.Forms.LinkLabel()
+        Me.btnExit = New System.Windows.Forms.Button()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.PinPanel.SuspendLayout()
@@ -106,15 +106,6 @@ Partial Class StaffLogin
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(373, 46)
         Me.Panel1.TabIndex = 8
-        '
-        'btnExit
-        '
-        Me.btnExit.Location = New System.Drawing.Point(321, -3)
-        Me.btnExit.Name = "btnExit"
-        Me.btnExit.Size = New System.Drawing.Size(54, 23)
-        Me.btnExit.TabIndex = 1
-        Me.btnExit.Text = "Exit"
-        Me.btnExit.UseVisualStyleBackColor = True
         '
         'StaffMenuForm
         '
@@ -282,6 +273,18 @@ Partial Class StaffLogin
         Me.lnkSwitchAdmin.TabIndex = 8
         Me.lnkSwitchAdmin.TabStop = True
         Me.lnkSwitchAdmin.Text = "Switch to Admin"
+        '
+        'btnExit
+        '
+        Me.btnExit.FlatAppearance.BorderSize = 0
+        Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExit.Location = New System.Drawing.Point(335, 0)
+        Me.btnExit.Name = "btnExit"
+        Me.btnExit.Size = New System.Drawing.Size(38, 29)
+        Me.btnExit.TabIndex = 1
+        Me.btnExit.Text = "✖"
+        Me.btnExit.UseVisualStyleBackColor = True
         '
         'StaffLogin
         '

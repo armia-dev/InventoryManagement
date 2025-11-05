@@ -29,17 +29,11 @@ Partial Class ReceiptForm
         Me.lblCash = New System.Windows.Forms.Label()
         Me.lblDateTime = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.tblReceipt = New System.Windows.Forms.TableLayoutPanel()
-        Me.lblTransacID = New System.Windows.Forms.Label()
         Me.lblCashier = New System.Windows.Forms.Label()
+        Me.lblTransacID = New System.Windows.Forms.Label()
+        Me.tblReceipt = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -109,69 +103,28 @@ Partial Class ReceiptForm
         Me.Panel2.Controls.Add(Me.lblChange)
         Me.Panel2.Controls.Add(Me.lblTotal)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 258)
+        Me.Panel2.Location = New System.Drawing.Point(0, 344)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(435, 87)
         Me.Panel2.TabIndex = 4
         '
-        'Label2
+        'lblCashier
         '
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(3, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(81, 34)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "ProductName"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblCashier.AutoSize = True
+        Me.lblCashier.Location = New System.Drawing.Point(5, 56)
+        Me.lblCashier.Name = "lblCashier"
+        Me.lblCashier.Size = New System.Drawing.Size(45, 13)
+        Me.lblCashier.TabIndex = 5
+        Me.lblCashier.Text = "Cashier:"
         '
-        'Label3
+        'lblTransacID
         '
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(111, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(81, 34)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Quantity"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label4
-        '
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(219, 0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(81, 34)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Price"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label5
-        '
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(327, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(81, 34)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "SubTotal"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'TableLayoutPanel1
-        '
-        Me.TableLayoutPanel1.ColumnCount = 4
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label3, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label4, 2, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label5, 3, 0)
-        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 52)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 1
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(435, 34)
-        Me.TableLayoutPanel1.TabIndex = 5
+        Me.lblTransacID.AutoSize = True
+        Me.lblTransacID.Location = New System.Drawing.Point(3, 10)
+        Me.lblTransacID.Name = "lblTransacID"
+        Me.lblTransacID.Size = New System.Drawing.Size(80, 13)
+        Me.lblTransacID.TabIndex = 4
+        Me.lblTransacID.Text = "Transaction ID:"
         '
         'tblReceipt
         '
@@ -185,33 +138,14 @@ Partial Class ReceiptForm
         Me.tblReceipt.Name = "tblReceipt"
         Me.tblReceipt.RowCount = 1
         Me.tblReceipt.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tblReceipt.Size = New System.Drawing.Size(435, 293)
+        Me.tblReceipt.Size = New System.Drawing.Size(435, 379)
         Me.tblReceipt.TabIndex = 3
-        '
-        'lblTransacID
-        '
-        Me.lblTransacID.AutoSize = True
-        Me.lblTransacID.Location = New System.Drawing.Point(3, 10)
-        Me.lblTransacID.Name = "lblTransacID"
-        Me.lblTransacID.Size = New System.Drawing.Size(80, 13)
-        Me.lblTransacID.TabIndex = 4
-        Me.lblTransacID.Text = "Transaction ID:"
-        '
-        'lblCashier
-        '
-        Me.lblCashier.AutoSize = True
-        Me.lblCashier.Location = New System.Drawing.Point(5, 56)
-        Me.lblCashier.Name = "lblCashier"
-        Me.lblCashier.Size = New System.Drawing.Size(45, 13)
-        Me.lblCashier.TabIndex = 5
-        Me.lblCashier.Text = "Cashier:"
         '
         'ReceiptForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(435, 345)
-        Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.ClientSize = New System.Drawing.Size(435, 431)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.tblReceipt)
         Me.Controls.Add(Me.Panel1)
@@ -221,7 +155,6 @@ Partial Class ReceiptForm
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -233,11 +166,6 @@ Partial Class ReceiptForm
     Friend WithEvents lblCash As Label
     Friend WithEvents lblDateTime As Label
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents tblReceipt As TableLayoutPanel
     Friend WithEvents lblCashier As Label
     Friend WithEvents lblTransacID As Label

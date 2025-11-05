@@ -23,21 +23,27 @@ Public Class LoginForm
             ' Role-based access validation
             If role IsNot Nothing Then
                 Select Case role.ToString().ToLower()
-                    ' ✅ ADMIN LOGIN
                     Case "admin"
+                        ' ✅ Store username and role globally
+                        LoggedInUsername = username
+                        LoggedInRole = "Admin"
+
                         MessageBox.Show("Welcome, " & username & " (Admin)!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
                         Dim adminMenu As New MainMenuForm
                         adminMenu.Show()
                         Me.Hide()
-                    ' 🚫 STAFF CANNOT LOGIN HERE
+
                     Case "staff"
                         MessageBox.Show("Access Denied! Staff accounts cannot log in under Admin Access.", "Access Restricted", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
                     Case Else
                         MessageBox.Show("Unknown role detected.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 End Select
             Else
                 MessageBox.Show("Invalid Username or Password (PIN). Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+
         Catch ex As Exception
             MessageBox.Show("Database connection error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally

@@ -273,10 +273,10 @@ Public Class CartControl
                     End If
                 End Using
 
-                ' ✅ Step 3: Check if enough cash
+                ' ✅ Step 3: Validate cash
                 Dim cashReceived As Decimal
                 If Not Decimal.TryParse(txtCashReceived.Text, cashReceived) Then
-                    MessageBox.Show("Please enter valid cash amount!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    MessageBox.Show("Please enter a valid cash amount.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Return
                 End If
 
@@ -285,7 +285,29 @@ Public Class CartControl
                     Return
                 End If
 
-                ' ✅ Step 4: Subtract quantities from products table
+                ' ✅ Step 4: Create a new TransactionID manually
+                Dim newTransID As Integer
+                Using getNextIdCmd As New MySqlCommand("SELECT IFNULL(MAX(TransactionID), 0) + 1 FROM transactions", con)
+                    newTransID = Convert.ToInt32(getNextIdCmd.ExecuteScalar())
+                End Using
+
+                ' ✅ Step 5: Insert all cart items using same TransactionID
+                Dim change As Decimal = cashReceived - total
+                Using insertCmd As New MySqlCommand("
+                INSERT INTO transactions 
+                (TransactionID, ProductID, ProductName, Quantity, Price, Subtotal, `Date&Time`, user, Cash_Received, Total_Amount, Change_Amount)
+                SELECT @transID, ProductID, Name, Quantity, Price, (Quantity * Price), NOW(), @user, @cash, @total, @change
+                FROM cart", con)
+
+                    insertCmd.Parameters.AddWithValue("@transID", newTransID)
+                    insertCmd.Parameters.AddWithValue("@user", LoggedInUsername)
+                    insertCmd.Parameters.AddWithValue("@cash", cashReceived)
+                    insertCmd.Parameters.AddWithValue("@total", total)
+                    insertCmd.Parameters.AddWithValue("@change", change)
+                    insertCmd.ExecuteNonQuery()
+                End Using
+
+                ' ✅ Step 6: Update products (subtract stock)
                 Using cartCmd As New MySqlCommand("SELECT ProductID, Quantity FROM cart", con)
                     Using reader As MySqlDataReader = cartCmd.ExecuteReader()
                         Dim updates As New List(Of Tuple(Of Integer, Integer))
@@ -304,40 +326,20 @@ Public Class CartControl
                     End Using
                 End Using
 
-                ' ✅ Step 5: Save to transaction history
-                Using transCmd As New MySqlCommand("
-                INSERT INTO transactions (TransactionID,ProductID, ProductName, Quantity, Price, Subtotal, Date&Time,user,Cash_Received, Total_Amount,Change_Amount)
-                SELECT ProductID, Name, Quantity, Price, (Quantity * Price), NOW()
-                FROM cart", con)
-                    transCmd.ExecuteNonQuery()
-                End Using
-
-                ' ✅ Step 6: Compute change
-                Dim change As Decimal = cashReceived - total
-
-                ' ✅ Step 7: Clear cart table in database
+                ' ✅ Step 7: Clear cart
                 Using clearCmd As New MySqlCommand("DELETE FROM cart", con)
                     clearCmd.ExecuteNonQuery()
                 End Using
 
-                ' ✅ Step 8: Refresh UI
+                ' ✅ Step 8: Store transaction ID in Module1
+                TransID = newTransID
+
+                ' ✅ Step 9: Refresh UI and show receipt
                 tableload()
                 txtCashReceived.Text = ""
                 lblTotal.Text = "TOTAL: ₱0.00"
 
-                ' ✅ Step 9: Show receipt form
-                Dim receipt As New ReceiptForm()
-                receipt.LoadReceiptFromDB(total, cashReceived, change)
-                receipt.ShowDialog()
-
-                ' ✅ Step 10: Confirmation message
-                MessageBox.Show($"Sale complete!" & vbCrLf &
-                            $"Total: ₱{total:N2}" & vbCrLf &
-                            $"Cash: ₱{cashReceived:N2}" & vbCrLf &
-                            $"Change: ₱{change:N2}",
-                            "Transaction Successful",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information)
+                ReceiptForm.Show()
 
             End Using
 
@@ -346,27 +348,6 @@ Public Class CartControl
         End Try
     End Sub
 
-    ' === SAVE TRANSACTION HISTORY ===
-    Private Sub SaveTransactionHistory(productID As Integer, name As String, qty As Integer, price As Decimal, subtotal As Decimal)
-        Try
-            Dim connectionString As String = "server=localhost;user=root;password=;database=inventorymanagement"
-            Using con As New MySqlConnection(connectionString)
-                con.Open()
-                Dim query As String = "INSERT INTO transactions (ProductID, ProductName, Quantity, Price, Subtotal, TransactionDate) VALUES (@id, @name, @qty, @price, @subtotal, @date)"
-                Using cmd As New MySqlCommand(query, con)
-                    cmd.Parameters.AddWithValue("@id", productID)
-                    cmd.Parameters.AddWithValue("@name", name)
-                    cmd.Parameters.AddWithValue("@qty", qty)
-                    cmd.Parameters.AddWithValue("@price", price)
-                    cmd.Parameters.AddWithValue("@subtotal", subtotal)
-                    cmd.Parameters.AddWithValue("@date", DateTime.Now)
-                    cmd.ExecuteNonQuery()
-                End Using
-            End Using
-        Catch ex As Exception
-            MessageBox.Show("Error saving transaction: " & ex.Message)
-        End Try
-    End Sub
 
     ' === CANCEL TRANSACTION ===
     Public Sub CancelTransaction()

@@ -23,7 +23,6 @@ Partial Class AddEditForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.txtName = New System.Windows.Forms.TextBox()
-        Me.txtCategory = New System.Windows.Forms.TextBox()
         Me.txtQuantity = New System.Windows.Forms.TextBox()
         Me.txtPrice = New System.Windows.Forms.TextBox()
         Me.btnCancel = New System.Windows.Forms.Button()
@@ -32,6 +31,7 @@ Partial Class AddEditForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.cmbCategory = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'txtName
@@ -42,15 +42,6 @@ Partial Class AddEditForm
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(147, 26)
         Me.txtName.TabIndex = 0
-        '
-        'txtCategory
-        '
-        Me.txtCategory.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCategory.Location = New System.Drawing.Point(99, 64)
-        Me.txtCategory.Multiline = True
-        Me.txtCategory.Name = "txtCategory"
-        Me.txtCategory.Size = New System.Drawing.Size(147, 26)
-        Me.txtCategory.TabIndex = 1
         '
         'txtQuantity
         '
@@ -134,11 +125,21 @@ Partial Class AddEditForm
         Me.Label4.TabIndex = 9
         Me.Label4.Text = "Price:"
         '
+        'cmbCategory
+        '
+        Me.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbCategory.FormattingEnabled = True
+        Me.cmbCategory.Location = New System.Drawing.Point(99, 69)
+        Me.cmbCategory.Name = "cmbCategory"
+        Me.cmbCategory.Size = New System.Drawing.Size(147, 21)
+        Me.cmbCategory.TabIndex = 10
+        '
         'AddEditForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(310, 247)
+        Me.Controls.Add(Me.cmbCategory)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -147,7 +148,6 @@ Partial Class AddEditForm
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.txtPrice)
         Me.Controls.Add(Me.txtQuantity)
-        Me.Controls.Add(Me.txtCategory)
         Me.Controls.Add(Me.txtName)
         Me.Name = "AddEditForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -158,7 +158,6 @@ Partial Class AddEditForm
     End Sub
 
     Friend WithEvents txtName As TextBox
-    Friend WithEvents txtCategory As TextBox
     Friend WithEvents txtQuantity As TextBox
     Friend WithEvents txtPrice As TextBox
     Friend WithEvents btnCancel As Button
@@ -167,4 +166,5 @@ Partial Class AddEditForm
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents cmbCategory As ComboBox
 End Class

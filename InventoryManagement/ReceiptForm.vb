@@ -1,89 +1,147 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Drawing
+Imports System.Windows.Forms
 
 Public Class ReceiptForm
+    Private ScrollPanel As Panel
 
-    Private ConnectionString As String = "server=127.0.0.1;port=3306;user id=root;password=;database=inventorymanagement"
+    Private Sub ReceiptForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MakeTableScrollable()
+        SetupTable()
+        LoadReceiptData()
+    End Sub
 
-    Public Sub LoadReceiptFromDB(total As Decimal, cash As Decimal, change As Decimal)
+    ' === Wrap only tblReceipt inside a scrollable panel ===
+    Private Sub MakeTableScrollable()
+        ' Create a panel to hold the table
+        ScrollPanel = New Panel With {
+            .AutoScroll = True,
+            .Dock = DockStyle.Top,
+            .Height = 250, ' Adjust the visible height for your table
+            .BorderStyle = BorderStyle.FixedSingle
+        }
+
+        ' Remove the table from its current parent (Designer container)
+        If tblReceipt.Parent IsNot Nothing Then
+            tblReceipt.Parent.Controls.Remove(tblReceipt)
+        End If
+
+        ' Configure tblReceipt appearance
+        tblReceipt.Dock = DockStyle.Top
+        tblReceipt.AutoSize = True
+        tblReceipt.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        tblReceipt.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+        tblReceipt.BackColor = Color.White
+        tblReceipt.ColumnCount = 4
+        tblReceipt.ColumnStyles.Clear()
+        tblReceipt.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 25)) ' ProductName
+        tblReceipt.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 25)) ' Quantity
+        tblReceipt.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 25)) ' Price
+        tblReceipt.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 25)) ' SubTotal
+
+        ' Add the table inside the scroll panel
+        ScrollPanel.Controls.Add(tblReceipt)
+
+        ' Add the panel above the labels
+        Me.Controls.Add(ScrollPanel)
+        ScrollPanel.BringToFront()
+    End Sub
+
+    ' === Create table header ===
+    Private Sub SetupTable()
+        tblReceipt.Controls.Clear()
+        tblReceipt.RowStyles.Clear()
+        tblReceipt.RowCount = 0
+
+        Dim headerFont As New Font("Segoe UI Semibold", 10, FontStyle.Bold)
+        Dim headers() As String = {"Product Name", "Quantity", "Price", "Subtotal"}
+
+        For i As Integer = 0 To headers.Length - 1
+            Dim lblHeader As New Label With {
+                .Text = headers(i),
+                .Dock = DockStyle.Fill,
+                .Font = headerFont,
+                .TextAlign = ContentAlignment.MiddleCenter,
+                .BackColor = Color.FromArgb(48, 128, 185),
+                .ForeColor = Color.White,
+                .Padding = New Padding(3)
+            }
+            tblReceipt.Controls.Add(lblHeader, i, 0)
+        Next
+
+        tblReceipt.RowCount = 1
+    End Sub
+
+    ' === Load data from transactions table ===
+    Private Sub LoadReceiptData()
+        Dim connStr As String = "server=localhost;user=root;password=;database=inventorymanagement"
+
         Try
-            ' Clear previous data
-            tblReceipt.Controls.Clear()
-            tblReceipt.RowStyles.Clear()
-            tblReceipt.RowCount = 0
+            Using con As New MySqlConnection(connStr)
+                con.Open()
 
-            Using conn As New MySqlConnection(ConnectionString)
-                conn.Open()
-
-                ' ✅ Fetch recent transactions
-                Dim query As String = "
-                    SELECT ProductID, ProductName, Quantity, Price, Subtotal
+                ' Load transaction details for labels
+                Dim transQuery As String = "
+                    SELECT `Date&Time`, user, Total_Amount, Cash_Received, Change_Amount
                     FROM transactions
-                    ORDER BY TransactionDate DESC
-                    LIMIT 20"
-                Using cmd As New MySqlCommand(query, conn)
-                    Using reader As MySqlDataReader = cmd.ExecuteReader()
-                        Dim row As Integer = 0
+                    WHERE TransactionID = @id
+                    LIMIT 1"
+                Using transCmd As New MySqlCommand(transQuery, con)
+                    transCmd.Parameters.AddWithValue("@id", TransID)
+                    Using reader As MySqlDataReader = transCmd.ExecuteReader()
+                        If reader.Read() Then
+                            lblTransacID.Text = "Transaction ID: " & TransID.ToString()
+                            lblDateTime.Text = "Date & Time: " & Convert.ToDateTime(reader("Date&Time")).ToString("yyyy-MM-dd HH:mm:ss")
+                            lblCashier.Text = "Cashier: " & reader("user").ToString()
+                            lblTotal.Text = "Total: ₱" & Convert.ToDecimal(reader("Total_Amount")).ToString("N2")
+                            lblCash.Text = "Cash: ₱" & Convert.ToDecimal(reader("Cash_Received")).ToString("N2")
+                            lblChange.Text = "Change: ₱" & Convert.ToDecimal(reader("Change_Amount")).ToString("N2")
+                        End If
+                    End Using
+                End Using
+
+                ' Load only the items with the same TransactionID
+                Dim itemsQuery As String = "
+                    SELECT ProductName, Quantity, Price, SubTotal
+                    FROM transactions
+                    WHERE TransactionID = @id"
+                Using itemsCmd As New MySqlCommand(itemsQuery, con)
+                    itemsCmd.Parameters.AddWithValue("@id", TransID)
+                    Using reader As MySqlDataReader = itemsCmd.ExecuteReader()
+                        Dim rowIndex As Integer = 1
+                        Dim dataFont As New Font("Segoe UI", 10, FontStyle.Regular)
 
                         While reader.Read()
                             tblReceipt.RowCount += 1
-                            tblReceipt.RowStyles.Add(New RowStyle(SizeType.Absolute, 25))
+                            tblReceipt.RowStyles.Add(New RowStyle(SizeType.AutoSize))
+                            Dim bgColor As Color = If(rowIndex Mod 2 = 0, Color.White, Color.FromArgb(245, 247, 250))
 
-                            ' === ProductID ===
-                            Dim lblID As New Label() With {
-                                .Text = reader("ProductID").ToString(),
-                                .Dock = DockStyle.Fill,
-                                .TextAlign = ContentAlignment.MiddleCenter
-                            }
-                            tblReceipt.Controls.Add(lblID, 0, row)
+                            Dim createLabel = Function(text As String, align As ContentAlignment) As Label
+                                                  Return New Label With {
+                                                      .Text = text,
+                                                      .Dock = DockStyle.Fill,
+                                                      .Font = dataFont,
+                                                      .TextAlign = align,
+                                                      .BackColor = bgColor,
+                                                      .AutoSize = False,
+                                                      .Margin = New Padding(0),
+                                                      .Padding = New Padding(3)
+                                                  }
+                                              End Function
 
-                            ' === ProductName ===
-                            Dim lblName As New Label() With {
-                                .Text = reader("ProductName").ToString(),
-                                .Dock = DockStyle.Fill,
-                                .TextAlign = ContentAlignment.MiddleLeft
-                            }
-                            tblReceipt.Controls.Add(lblName, 1, row)
+                            tblReceipt.Controls.Add(createLabel(reader("ProductName").ToString(), ContentAlignment.MiddleLeft), 0, rowIndex)
+                            tblReceipt.Controls.Add(createLabel(reader("Quantity").ToString(), ContentAlignment.MiddleCenter), 1, rowIndex)
+                            tblReceipt.Controls.Add(createLabel("₱" & Convert.ToDecimal(reader("Price")).ToString("N2"), ContentAlignment.MiddleRight), 2, rowIndex)
+                            tblReceipt.Controls.Add(createLabel("₱" & Convert.ToDecimal(reader("SubTotal")).ToString("N2"), ContentAlignment.MiddleRight), 3, rowIndex)
 
-                            ' === Quantity ===
-                            Dim lblQty As New Label() With {
-                                .Text = reader("Quantity").ToString(),
-                                .Dock = DockStyle.Fill,
-                                .TextAlign = ContentAlignment.MiddleCenter
-                            }
-                            tblReceipt.Controls.Add(lblQty, 2, row)
-
-                            ' === Price ===
-                            Dim lblPrice As New Label() With {
-                                .Text = "₱" & Convert.ToDecimal(reader("Price")).ToString("N2"),
-                                .Dock = DockStyle.Fill,
-                                .TextAlign = ContentAlignment.MiddleRight
-                            }
-                            tblReceipt.Controls.Add(lblPrice, 3, row)
-
-                            ' === Subtotal ===
-                            Dim lblSub As New Label() With {
-                                .Text = "₱" & Convert.ToDecimal(reader("Subtotal")).ToString("N2"),
-                                .Dock = DockStyle.Fill,
-                                .TextAlign = ContentAlignment.MiddleRight
-                            }
-                            tblReceipt.Controls.Add(lblSub, 4, row)
-
-                            row += 1
+                            rowIndex += 1
                         End While
                     End Using
                 End Using
             End Using
 
-            ' === Display totals and time ===
-            lblTotal.Text = "Total: ₱" & total.ToString("N2")
-            lblCash.Text = "Receive Cash: ₱" & cash.ToString("N2")
-            lblChange.Text = "Change: ₱" & change.ToString("N2")
-            lblDateTime.Text = "Date and Time: " & DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-
         Catch ex As Exception
             MessageBox.Show("Error loading receipt: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-
 End Class
